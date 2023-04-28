@@ -1,0 +1,9 @@
+{% extends 'base.html' %} {% block content %}
+<h1>About Page</h1>
+<p>Here is for class {{class_name}}</p>
+
+{% if class_name %}
+<h3>Class name: {{class_name}}</h3>
+{% else %}
+<h3>Class name: None</h3>
+{% endif %} {% endblock %}
