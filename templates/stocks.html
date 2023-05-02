@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>List of Stocks</h1>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Ticker</th>
+                    <th>Number of Shares</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ session['ticker'] }}</td>
+                    <td>{{ session['numberOfShares'] }}</td>
+                    <td>{{ session['price'] }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
