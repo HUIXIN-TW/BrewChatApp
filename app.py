@@ -81,5 +81,10 @@ def list_stock():
     return render_template('stocks.html')
 
 
+@app.route('/button')
+def button():
+    return render_template("button.html", title="Button!")
+
+
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
