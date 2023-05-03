@@ -17,6 +17,7 @@ pipreqs==0.4.13
 pluggy==1.0.0
 pydantic==1.10.7
 pytest==7.3.1
+python-dotenv==1.0.0
 requests==2.29.0
 tomli==2.0.1
 typing_extensions==4.5.0
