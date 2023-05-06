@@ -1,14 +1,29 @@
 import secrets
+import logging
+from logging.handlers import RotatingFileHandler
 
 from flask import (Flask, redirect, render_template, request, session,
-                   url_for)
+                   url_for, flash)
 from markupsafe import escape
 
 from pydantic import BaseModel, ValidationError, validator
 
 app = Flask(__name__)
 
+# set the secret key.
 app.secret_key = secrets.token_bytes(32)
+
+# logging configuration
+file_handler = RotatingFileHandler(
+    filename='logs/app.log', maxBytes=10240, backupCount=10)
+formatter = logging.Formatter(
+    '[%(asctime)s] %(levelname)s in %(module)s: %(message)s')
+file_handler.setFormatter(formatter)
+app.logger.addHandler(file_handler)
+app.logger.setLevel(logging.INFO)
+
+# log application startup
+app.logger.info('App startup')
 
 
 class StockModel(BaseModel):
@@ -68,6 +83,9 @@ def add_stock():
             session['numberOfShares'] = stock_data.number_of_shares
             session['price'] = stock_data.price
 
+            flash(
+                f'Stock - {stock_data.ticker} added successfully!', 'success')
+
             return redirect(url_for('list_stock'))  # call list_stock function
 
         except ValidationError as e:
@@ -84,6 +102,28 @@ def list_stock():
 @app.route('/button')
 def button():
     return render_template("button.html", title="Button!")
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        session['username'] = request.form['username']
+        return redirect(url_for('index'))
+    return render_template('login.html')
+
+
+@app.route('/logout')
+def logout():
+    session.pop('username', None)
+    return redirect(url_for('index'))
+
+
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        session['username'] = request.form['username']
+        return redirect(url_for('index'))
+    return render_template('register.html')
 
 
 if __name__ == '__main__':

@@ -5,6 +5,7 @@ _UWA CITS5505 Project2 (22922504, 22926143)_
 ## Create an environment
 
 Refer to: https://flask.palletsprojects.com/en/2.2.x/installation/#create-an-environment
+
 Create a project folder and a venv folder within:
 
 ```bash
@@ -19,10 +20,10 @@ Before you work on your project, activate the corresponding environment:
 % . venv/bin/activate
 ```
 
-## Install Flask
+## Install all requirements
 
 ```bash
-% pip install Flask
+% pip3 install -r requirements.txt
 ```
 
 A minimal Flask application looks something like this:
@@ -35,4 +36,8 @@ app = Flask(__name__)
 @app.route("/")
 def hello_world():
     return "<p>Hello, World!</p>"
+```
+
+```bash
+% flask --app app.py --debug run
 ```
