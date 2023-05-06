@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, width=device-width">
+
+    <title>JustChat</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_base.css') }}">
+    {% block styling %} {% endblock %}
+  </head>
+  <body>
+    <div>
+      <!-- header section: nav bar and bio pic -->
+      <header>
+        <nav>
+        {% if session.user_id %}
+          <ul>
+            <li><a href="./aboutMe.html">About Me</a></li>
+            <li><a href="./demo.html">Demo</a></li>
+            <li><a href="./historyConcept.html">Concept &amp; History</a></li>
+          </ul>
+          <ul>
+            <li ><a>{{session.user_name}}</a></li>
+            <li ><a href="/login">Log Out</a></li>
+        </ul>
+         {% else %}
+         <ul>
+            <li><a  href="/register">Register</a></li>
+            <li><a  href="/login">Log In</a></li>
+        </ul>
+         {% endif %}
+          <div class="bio-pic">
+            <p># MakeFriends</p>
+            <p># HaveFun</p>
+            <p># WonderfulMemory</p>
+          </div>
+        </nav>
+      </header>
+      <main>
+        {% block main %}{% endblock %}
+      </main>
+      <!-- footer -->
+      <footer id="footer">
+        <p>Copyright &copy; 2023 Huixin Yang & YunChuan Kung</p>
+      </footer>
+    </div>
+  </body>
+</html>

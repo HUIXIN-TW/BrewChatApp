@@ -31,7 +31,7 @@ app.logger.info('App startup')
 def index():
     return render_template('index.html')
 
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/login/', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         session['username'] = request.form['username']
@@ -39,19 +39,22 @@ def login():
     return render_template('login.html')
 
 
-@app.route('/logout')
+@app.route('/logout/')
 def logout():
     session.pop('username', None)
     return redirect(url_for('index'))
 
 
-@app.route('/register', methods=['GET', 'POST'])
+@app.route('/register/', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
         session['username'] = request.form['username']
         return redirect(url_for('index'))
     return render_template('register.html')
 
+@app.route("/account/")
+def account():
+    return render_template('account.html')
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)

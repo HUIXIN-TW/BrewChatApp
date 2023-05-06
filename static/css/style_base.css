@@ -1,0 +1,177 @@
+/* global */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  }
+
+main{
+    /* Scroll horizontally as needed */
+    overflow-x: auto;
+
+    /* Center contents */
+    text-align: center;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #000000;
+  text-align: center;
+  padding: 5vh 0vh 0vh 0vh;
+}
+  
+  /* About me */
+  footer,
+  nav ul {
+    list-style-type: none;
+    overflow: hidden;
+    background-color: #333;
+  }
+  
+  nav li {
+    float: right;
+  }
+  
+  footer,
+  nav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+
+  #footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+  }
+
+  
+  nav li a:hover {
+    color: #ad6d2f;
+    background-image: linear-gradient(to bottom right, rgb(0, 0, 0), #333);
+    text-decoration: overline underline;
+  }
+  
+  nav div p {
+    font-size: small;
+    font-style: italic;
+    float: left;
+    color: white;
+    padding: 20vh 3vh 0vh 3vh;
+  }
+
+
+  @media screen and (max-width: 360px) {
+    nav div p {
+      padding: 5vh 3vh 0vh 3vh;
+    }
+  }
+  
+  /* pic */
+  .bio-pic {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), #333),
+      url("https://images.unsplash.com/photo-1587080413959-06b859fb107d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8Y29mZmVlJTIwY3VwfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=900&q=60");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 25vh;
+    background-position: center;
+    background-attachment: fixed;
+  }
+  
+  .input-group{
+    border: solid 1px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: monospace;
+    margin-top: 15px;
+    border-radius: 5px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .input-group {
+      padding: 10px 20px; /* Decrease the padding on smaller screens */
+      font-size: 14px; /* Decrease the font size on smaller screens */
+    }
+  }
+
+  .lo-button {
+    background-color: #333;
+    border: none;
+    color: #4af626;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: monospace;
+    cursor: pointer;
+    border-radius: 12px;
+  }
+  
+  .lo-button:hover {
+    background-color: #4af626;
+    color: #333;
+  }
+
+  .underline-link {
+    text-decoration: underline;
+  }
+
+  /*Account page style*/
+  table {
+    margin: 0 auto;
+    width: 45%;
+  }
+  
+  th:nth-child(1),
+  td:nth-child(1) {
+    background-color: #333;
+    color: white;
+    text-align: center;
+  }
+  
+  th:nth-child(2),
+  td:nth-child(2) {
+    background-color: white;
+    color: black;
+    text-align: left;
+  }
+
+  td {
+    font-size: 20px;
+    margin: 0;
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
+    padding: 3px 5px 6px 5px;
+  }
+  
+  td:hover {
+    border-top: 3.5px solid black;
+    border-bottom: 3.5px solid black;
+    padding-top: 2px;
+    padding-bottom: 2px;
+  }
+  
+  tr:hover td {
+    color: #333;
+    background-color: rgb(255, 194, 186);
+  }
+
+  .table-input{
+    font-size: 20px;
+    margin: 0;
+    border: none;
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
+    padding: 3px 5px 6px 5px;
+    text-align: center;
+  }
+
+ 
+  
+  

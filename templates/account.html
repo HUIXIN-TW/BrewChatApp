@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+
+{% block main %}
+    <h1>Account details</h1>
+    <form>
+        <table>
+            <tbody>
+                <tr>
+                    <td>Username</td>
+                    <td>
+                        <input class="table-input" type="text" name="username" value="XXX" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Date of Birth</td>
+                    <td>
+                        <input class="table-input" type="date" name="dob" value="YYYY-MM-DD" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>MBTI Type</td>
+                    <td>
+                      <select class="table-input" name="mbti" readonly>
+                        <option value="ISTJ">ISTJ</option>
+                        <option value="ISFJ">ISFJ</option>
+                        <option value="INFJ">INFJ</option>
+                        <option value="INTJ">INTJ</option>
+                        <option value="ISTP">ISTP</option>
+                        <option value="ISFP">ISFP</option>
+                        <option value="INFP">INFP</option>
+                        <option value="INTP">INTP</option>
+                        <option value="ESTP">ESTP</option>
+                        <option value="ESFP">ESFP</option>
+                        <option value="ENFP">ENFP</option>
+                        <option value="ENTP">ENTP</option>
+                        <option value="ESTJ">ESTJ</option>
+                        <option value="ESFJ">ESFJ</option>
+                        <option value="ENFJ">ENFJ</option>
+                        <option value="ENTJ">ENTJ</option>
+                      </select>
+                    </td>
+                  </tr>
+                <tr>
+                    <td>Interests</td>
+                    <td>
+                        <input class="table-input" type="text" name="interests" value="XXX" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Favorite Song</td>
+                    <td>
+                        <input class="table-input" type="text" name="favorite-song" value="XXX" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Favorite Sport </td>
+                    <td>
+                        <input class="table-input" type="text" name="favorite-sport" value="XXX" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Location</td>
+                    <td>
+                        <input class="table-input" type="text" name="location" value="XXX" readonly>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+    <button class="lo-button" id="edit-btn">Edit</button>
+    <button  class="lo-button" id="save-btn">Save</button>
+    <script src="{{ url_for('static', filename='js/edit.js')}}"></script> 
+{% endblock %}
