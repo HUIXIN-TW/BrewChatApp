@@ -53,6 +53,39 @@ The second part of the project criteria is the back end functionality of web app
 -   [ ] A method to store interactions and results.
 -   [ ] A method to search previous interactions.
 
+## Git Version
+
+To push a new branch to a remote repository in Git, you can follow these steps:
+
+First, create a new branch locally using the following command:
+
+```
+git checkout -b <new-branch-name>
+```
+
+Make some changes to the new branch and commit them:
+
+```
+git add .
+git commit -m "commit message"
+```
+
+Push the new branch to the remote repository:
+
+```
+git push -u <remote-name> <new-branch-name>
+```
+
+Note: Replace <remote-name> with the name of your remote repository, for example, origin. Replace <new-branch-name> with the name of the new branch you created.
+
+After pushing the branch, you should be able to see it in the remote repository on the website or by running the following command:
+
+```
+git branch -r
+```
+
+That's it! Your new branch has been pushed to the remote repository.
+
 ## Submission and Presentation Instructions
 
 Discussion when the project complete 75% or a week before the presentation
