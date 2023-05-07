@@ -147,7 +147,8 @@ def hello_world():
 ```
 
 ```bash
-flask --app app.py --debug run
+flask --app justchat.py --debug run
+# if not work, try `export FLASK_APP=justchat.py`
 ```
 
 ## Others
@@ -162,4 +163,15 @@ Check file tree for a Flask project with a basic structure:
 
 ```bash
 tree -I 'venv|__pycache__|pytest_cache' > tree.txt
+```
+
+Initialize database
+
+```bash
+flask db init
+flask db migrate -m "users table"
+flask db upgrade
+flask db migrate -m "posts table"
+flask db upgrade
+flask shell
 ```
