@@ -14,16 +14,16 @@ A search view, allowing the user to review their history and previous interactio
 
 ### Functionalities
 
-- [ ] Register/ Log in/ Log out/ Account Information / Change Password
-- [ ] Opening View
-- [ ] Chat View
-- [ ] Search View
-- [ ] Set up Final GitHub README
-  - [ ] the purpose of the web application, explaining the its design and use.
-  - [ ] the architecture of the web application. (front, back, API, db, deployment)
-  - [ ] describe how to launch the web application.
-  - [ ] describe some unit tests for the web application, and how to run them.
-  - [ ] Include commit logs, showing contributions and review from both contributing students
+-   [ ] Register/ Log in/ Log out/ Account Information / Change Password
+-   [ ] Opening View
+-   [ ] Chat View
+-   [ ] Search View
+-   [ ] Set up Final GitHub README
+    -   [ ] the purpose of the web application, explaining the its design and use.
+    -   [ ] the architecture of the web application. (front, back, API, db, deployment)
+    -   [ ] describe how to launch the web application.
+    -   [ ] describe some unit tests for the web application, and how to run them.
+    -   [ ] Include commit logs, showing contributions and review from both contributing students
 
 ### Criteria
 
@@ -33,25 +33,25 @@ A search view, allowing the user to review their history and previous interactio
 
 Criteria: Front-end (50%)
 
-- [ ] The web application must be functional so that the user can easily access the application.
-- [ ] The webpage must be implemented using HTML5, CSS and Javascript (or a subset thereof).
-- [ ] All resources used (inlcuding pictures, javascript libraries, css) must be full referenced.
-- [ ] The website must use HTML5, and CSS. The HTML and CSS must pass this validator.
-- [ ] The website must work on Chrome, Firefox and Microsoft Edge, and render well on mobile devices.
-- [ ] The website should have at least three pages/views:
-- [ ] one explaining the context to users, and allowing account creation or log in;
-- [ ] one presenting the interactive chat;
-- [ ] one page allowing a user to search their previous interactions.
-- [ ] There must be a consistent style (via css file) for all pages yet each page should be easily identifiable.
+-   [ ] The web application must be functional so that the user can easily access the application.
+-   [ ] The webpage must be implemented using HTML5, CSS and Javascript (or a subset thereof).
+-   [ ] All resources used (including pictures, javascript libraries, css) must be full referenced.
+-   [ ] The website must use HTML5, and CSS. The HTML and CSS must pass this validator.
+-   [ ] The website must work on Chrome, Firefox and Microsoft Edge, and render well on mobile devices.
+-   [ ] The website should have at least three pages/views:
+-   [ ] one explaining the context to users, and allowing account creation or log in;
+-   [ ] one presenting the interactive chat;
+-   [ ] one page allowing a user to search their previous interactions.
+-   [ ] There must be a consistent style (via css file) for all pages yet each page should be easily identifiable.
 
 #### Back-end
 
 Criteria: Backend functionality (50%)
 The second part of the project criteria is the back end functionality of web application. The web application should be implmented using Flask (any additional libraries/modules require unit coordinator approval), and provide at least the following functionality:
 
-- [ ] A user account and tracking feature.
-- [ ] A method to store interactions and results.
-- [ ] A method to search previous inetractions.
+-   [ ] A user account and tracking feature.
+-   [ ] A method to store interactions and results.
+-   [ ] A method to search previous interactions.
 
 ## Submission and Presentation Instructions
 
@@ -66,7 +66,7 @@ Refer to: https://flask.palletsprojects.com/en/2.2.x/installation/#create-an-env
 Create a project folder and a venv folder within:
 
 ```bash
-% python3 -m venv venv
+python3 -m venv venv
 ```
 
 ## Activate the environment
@@ -74,13 +74,13 @@ Create a project folder and a venv folder within:
 Before you work on your project, activate the corresponding environment:
 
 ```bash
-% . venv/bin/activate
+. venv/bin/activate
 ```
 
 ## Install all requirements
 
 ```bash
-% pip3 install -r requirements.txt
+pip3 install -r requirements.txt
 ```
 
 A minimal Flask application looks something like this:
@@ -96,17 +96,21 @@ def hello_world():
 ```
 
 ```bash
-% flask --app app.py --debug run
+pip3 install -r requirements.txt
+```
+
+```bash
+flask --app app.py --debug run
 ```
 
 Get you all requirements (every time when you install new module)
 
 ```bash
-% python3 -m pip freeze > requirements.txt
+python3 -m pip freeze > requirements.txt
 ```
 
 Check file tree for a Flask project with a basic structure:
 
 ```bash
-% tree -I 'venv|__pycache__|pytest_cache' > tree.txt
+tree -I 'venv|__pycache__|pytest_cache' > tree.txt
 ```
