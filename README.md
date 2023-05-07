@@ -86,6 +86,22 @@ git branch -r
 
 That's it! Your new branch has been pushed to the remote repository.
 
+Template
+
+```md
+What I did:
+
+-   [ ]
+
+Unsolved problems:
+
+-   [ ]
+
+Next steps:
+
+-   [ ]
+```
+
 ## Submission and Presentation Instructions
 
 Discussion when the project complete 75% or a week before the presentation
@@ -116,6 +132,8 @@ Before you work on your project, activate the corresponding environment:
 pip3 install -r requirements.txt
 ```
 
+## Run Web App
+
 A minimal Flask application looks something like this:
 
 ```python
@@ -129,12 +147,10 @@ def hello_world():
 ```
 
 ```bash
-pip3 install -r requirements.txt
-```
-
-```bash
 flask --app app.py --debug run
 ```
+
+## Others
 
 Get you all requirements (every time when you install new module)
 
