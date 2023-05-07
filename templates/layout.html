@@ -3,33 +3,28 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, width=device-width">
-
     <title>JustChat</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style_base.css') }}">
     {% block styling %} {% endblock %}
   </head>
   <body>
     <div>
-      <!-- header section: nav bar and bio pic -->
+      <!-- header section: nav bar and welocme pic -->
       <header>
         <nav>
         {% if session.user_id %}
           <ul>
-            <li><a href="./aboutMe.html">About Me</a></li>
-            <li><a href="./demo.html">Demo</a></li>
-            <li><a href="./historyConcept.html">Concept &amp; History</a></li>
+            <li><a>{{session.user_name}}</a></li>
+            <li><a href="./account.html">Account Info</a></li>
+            <li><a href="./logout.html">Log out</a></li>
           </ul>
+        {% else %}
           <ul>
-            <li ><a>{{session.user_name}}</a></li>
-            <li ><a href="/login">Log Out</a></li>
-        </ul>
-         {% else %}
-         <ul>
-            <li><a  href="/register">Register</a></li>
-            <li><a  href="/login">Log In</a></li>
-        </ul>
-         {% endif %}
-          <div class="bio-pic">
+            <li><a href="/register">Register</a></li>
+            <li><a href="/login">Log In</a></li>
+          </ul>
+        {% endif %}
+          <div class="welcome-pic">
             <p># MakeFriends</p>
             <p># HaveFun</p>
             <p># WonderfulMemory</p>
@@ -38,6 +33,7 @@
       </header>
       <main>
         {% block main %}{% endblock %}
+        <script src="{{ url_for('static', filename='js/script.js')}}"></script> 
       </main>
       <!-- footer -->
       <footer id="footer">

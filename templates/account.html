@@ -8,7 +8,7 @@
                 <tr>
                     <td>Username</td>
                     <td>
-                        <input class="table-input" type="text" name="username" value="XXX" readonly>
+                        <input class="table-input" type="text" name="username" value="username readonly>
                     </td>
                 </tr>
                 <tr>
@@ -43,31 +43,30 @@
                 <tr>
                     <td>Interests</td>
                     <td>
-                        <input class="table-input" type="text" name="interests" value="XXX" readonly>
+                        <input class="table-input" type="text" name="interests" value="interests" readonly>
                     </td>
                 </tr>
                 <tr>
                     <td>Favorite Song</td>
                     <td>
-                        <input class="table-input" type="text" name="favorite-song" value="XXX" readonly>
+                        <input class="table-input" type="text" name="favorite-song" value="Song" readonly>
                     </td>
                 </tr>
                 <tr>
                     <td>Favorite Sport </td>
                     <td>
-                        <input class="table-input" type="text" name="favorite-sport" value="XXX" readonly>
+                        <input class="table-input" type="text" name="favorite-sport" value="Sport" readonly>
                     </td>
                 </tr>
                 <tr>
                     <td>Location</td>
                     <td>
-                        <input class="table-input" type="text" name="location" value="XXX" readonly>
+                        <input class="table-input" type="text" name="location" value="postcode" readonly>
                     </td>
                 </tr>
             </tbody>
         </table>
     </form>
-    <button class="lo-button" id="edit-btn">Edit</button>
-    <button  class="lo-button" id="save-btn">Save</button>
-    <script src="{{ url_for('static', filename='js/edit.js')}}"></script> 
+    <button class="btn" id="edit-btn">Edit</button>
+    <button  class="btn" id="save-btn">Save</button>
 {% endblock %}
