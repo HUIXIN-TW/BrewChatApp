@@ -4,13 +4,13 @@
     <form action="/register" method="post">
         <h1>REGISTER</h1>
         <div>
-            <input autocomplete="off" autofocus class="input-group" name="username" placeholder="Username" type="text">
+            <input autocomplete="off" autofocus class="input-group" name="username" placeholder="Username" type="text" required>
         </div>
         <div>
-            <input class="input-group" name="password" placeholder="Password" type="password">
+            <input class="input-group" name="password" placeholder="Password" type="password" required>
         </div>
         <div>
-            <input class="input-group" name="confirmation" placeholder="Password Again" type="password">
+            <input class="input-group" name="confirm_password" placeholder="Password Again" type="password" required>
         </div>
         <div>
             <a href="/login" class="underline-link">Already Have Account?</a>

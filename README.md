@@ -165,13 +165,44 @@ Check file tree for a Flask project with a basic structure:
 tree -I 'venv|__pycache__|pytest_cache' > tree.txt
 ```
 
+## Database setting
+
 Initialize database
 
 ```bash
 flask db init
 flask db migrate -m "users table"
 flask db upgrade
-flask db migrate -m "posts table"
+flask db migrate -m "chats table"
 flask db upgrade
 flask shell
+```
+
+Play with DB
+Type `python` in Terminal to get into python playground
+
+```python
+>>> from app.models import User
+>>> u = User(username='susan', email='susan@example.com')
+>>> u
+<User susan>
+```
+
+Activate shell
+
+```
+(venv) huixinyang@Damons-MacBook-Air CITS5505-JustChat % flask shell
+Python 3.9.6 (default, Oct 18 2022, 12:41:40) 
+[Clang 14.0.0 (clang-1400.0.29.202)] on darwin
+App: app
+Instance: /Users/huixinyang/Library/Mobile Documents/iCloud~md~obsidian/Documents/ObsidianSync/000 UWA/UWA Materials/2023s1/CITS5505/CITS5505-JustChat/instance
+>>> app
+<Flask 'app'>
+>>> db
+<SQLAlchemy sqlite:////Users/huixinyang/Library/Mobile Documents/iCloud~md~obsidian/Documents/ObsidianSync/000 UWA/UWA Materials/2023s1/CITS5505/CITS5505-JustChat/app.db>
+>>> User
+<class 'app.models.User'>
+>>> Chat
+<class 'app.models.Chat'>
+>>> 
 ```

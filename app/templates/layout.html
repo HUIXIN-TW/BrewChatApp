@@ -12,9 +12,9 @@
       <!-- header section: nav bar and welocme pic -->
       <header>
         <nav>
-        {% if session['id'] %}
+        {% if current_user.username %}
           <ul>
-            <li><a href="/account">{{ session['username'] }} Account Info</a></li>
+            <li><a href="/account">{{ current_user.username }} Account Info</a></li>
             <li><a href="/logout">Log out</a></li>
           </ul>
         {% else %}
@@ -31,6 +31,7 @@
         </nav>
       </header>
       <main>
+        {% include 'flash_messages.html' %}
         {% block main %}{% endblock %}
         <script src="{{ url_for('static', filename='js/script.js')}}"></script> 
       </main>
