@@ -53,6 +53,55 @@ The second part of the project criteria is the back end functionality of web app
 -   [ ] A method to store interactions and results.
 -   [ ] A method to search previous interactions.
 
+## Git Version
+
+To push a new branch to a remote repository in Git, you can follow these steps:
+
+First, create a new branch locally using the following command:
+
+```
+git checkout -b <new-branch-name>
+```
+
+Make some changes to the new branch and commit them:
+
+```
+git add .
+git commit -m "commit message"
+```
+
+Push the new branch to the remote repository:
+
+```
+git push -u <remote-name> <new-branch-name>
+```
+
+Note: Replace <remote-name> with the name of your remote repository, for example, origin. Replace <new-branch-name> with the name of the new branch you created.
+
+After pushing the branch, you should be able to see it in the remote repository on the website or by running the following command:
+
+```
+git branch -r
+```
+
+That's it! Your new branch has been pushed to the remote repository.
+
+Template
+
+```md
+What I did:
+
+-   [ ]
+
+Unsolved problems:
+
+-   [ ]
+
+Next steps:
+
+-   [ ]
+```
+
 ## Submission and Presentation Instructions
 
 Discussion when the project complete 75% or a week before the presentation
@@ -83,6 +132,8 @@ Before you work on your project, activate the corresponding environment:
 pip3 install -r requirements.txt
 ```
 
+## Run Web App
+
 A minimal Flask application looks something like this:
 
 ```python
@@ -96,12 +147,11 @@ def hello_world():
 ```
 
 ```bash
-pip3 install -r requirements.txt
+flask --app justchat.py --debug run
+# if not work, try `export FLASK_APP=justchat.py`
 ```
 
-```bash
-flask --app app.py --debug run
-```
+## Others
 
 Get you all requirements (every time when you install new module)
 
@@ -113,4 +163,46 @@ Check file tree for a Flask project with a basic structure:
 
 ```bash
 tree -I 'venv|__pycache__|pytest_cache' > tree.txt
+```
+
+## Database setting
+
+Initialize database
+
+```bash
+flask db init
+flask db migrate -m "users table"
+flask db upgrade
+flask db migrate -m "chats table"
+flask db upgrade
+flask shell
+```
+
+Play with DB
+Type `python` in Terminal to get into python playground
+
+```python
+>>> from app.models import User
+>>> u = User(username='susan', email='susan@example.com')
+>>> u
+<User susan>
+```
+
+Activate shell
+
+```
+(venv) huixinyang@Damons-MacBook-Air CITS5505-JustChat % flask shell
+Python 3.9.6 (default, Oct 18 2022, 12:41:40) 
+[Clang 14.0.0 (clang-1400.0.29.202)] on darwin
+App: app
+Instance: /Users/huixinyang/Library/Mobile Documents/iCloud~md~obsidian/Documents/ObsidianSync/000 UWA/UWA Materials/2023s1/CITS5505/CITS5505-JustChat/instance
+>>> app
+<Flask 'app'>
+>>> db
+<SQLAlchemy sqlite:////Users/huixinyang/Library/Mobile Documents/iCloud~md~obsidian/Documents/ObsidianSync/000 UWA/UWA Materials/2023s1/CITS5505/CITS5505-JustChat/app.db>
+>>> User
+<class 'app.models.User'>
+>>> Chat
+<class 'app.models.Chat'>
+>>> 
 ```
