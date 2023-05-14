@@ -1,6 +1,9 @@
-{% extends "layout.html" %}
-
-{% block main %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chatbot</title>
+</head>
+<body>
     <h1>Chatbot</h1>
     <div>
         <div id="chat-log"></div>
@@ -9,7 +12,6 @@
             <button type="submit">Send</button>
         </form>
     </div>
-{% endblock %}
-{% block script %}
     <script src="{{ url_for('static', filename='js/chatbot.js') }}"></script>
-{% endblock %}
+</body>
+</html>

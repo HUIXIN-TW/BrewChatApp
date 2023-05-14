@@ -90,15 +90,12 @@ Template
 
 ```md
 What I did:
-
 -   [ ]
 
 Unsolved problems:
-
 -   [ ]
 
 Next steps:
-
 -   [ ]
 ```
 
@@ -148,8 +145,8 @@ def hello_world():
 
 ```bash
 flask --app justchat.py --debug run
-# if not work, try `export FLASK_APP=justchat.py`
 ```
+if not work, try `export FLASK_APP=justchat.py`
 
 ## Others
 

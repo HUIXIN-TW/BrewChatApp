@@ -1,16 +1,23 @@
-from app import app
+from app import app, db, chatbot
+
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask import (Flask, redirect, render_template, request, session,
-                   url_for, flash)
+                   url_for, flash, jsonify)
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User, Chat
-from app import db
 
-
-@app.route('/')
-@app.route('/index')
+@app.route('/', methods=['GET', 'POST'])
+@app.route('/index', methods=['GET', 'POST'])
 @login_required
 def index():
+    if request.method == 'POST':
+        message = request.form['message']
+        response = chatbot.get_response(message)
+        # Create a new Chat instance with the user input and chatbot response, and add it to the database.
+        chat = Chat(body=message, response=response, speaker=current_user)
+        db.session.add(chat)
+        db.session.commit()
+        return jsonify({'response': response})
     return render_template('index.html')
 
 
@@ -92,3 +99,35 @@ def register():
 @login_required
 def account():
     return render_template('account.html')
+
+
+# @app.route('/chatbot/', methods=['GET', 'POST'])
+# @login_required
+# def chatbot_response():
+#     if request.method == 'POST':
+#         message = request.form['message']
+#         response = chatbot.get_response(message)
+#         # Create a new Chat instance with the user input and chatbot response, and add it to the database.
+#         chat = Chat(body=message, response=response, speaker=current_user)
+#         db.session.add(chat)
+#         db.session.commit()
+#         return jsonify({'response': response})
+#     return render_template('chatbot.html')
+
+@app.route('/memory/', methods=['GET', 'POST'])
+@login_required
+def search():
+    if request.method == 'POST':
+        # check if 'query' parameter exists in form data
+        if 'query' in request.form:
+            query = request.form['query']
+            # process the search query and return the results
+            results = Chat.query.filter(Chat.user_id == current_user.id, Chat.body.ilike(f"%{query}%")).order_by(Chat.timestamp.asc()).all()
+            if results:
+                return jsonify({'results': [{'body': r.body, 'response': r.response, 'timestamp': r.timestamp} for r in results]})
+            else:
+                return jsonify({'error': 'No results found'})
+        else:
+            # 'query' parameter is missing from form data
+            return jsonify({'error': 'Missing query parameter'})
+    return render_template('memory.html')
