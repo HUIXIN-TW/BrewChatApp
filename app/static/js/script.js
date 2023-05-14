@@ -83,20 +83,20 @@ function loadRandomQuote() {
 }
 
 // Send message and show in the chat box
-function sendMessage() {
-  var messageInput = document.getElementById("message");
-  var messageText = messageInput.value;
+// function sendMessage() {
+//   var messageInput = document.getElementById("message");
+//   var messageText = messageInput.value;
 
-  if (messageText.trim() !== "") {
-      var chatWindow = document.getElementById("chat-window");
-      var newMessage = document.createElement("div");
-      newMessage.classList.add("message");
-      newMessage.classList.add("right");
-      newMessage.innerHTML = messageText;
-      chatWindow.appendChild(newMessage);
-      messageInput.value = "";
-  }
-}
+//   if (messageText.trim() !== "") {
+//       var chatWindow = document.getElementById("chat-window");
+//       var newMessage = document.createElement("div");
+//       newMessage.classList.add("message");
+//       newMessage.classList.add("right");
+//       newMessage.innerHTML = messageText;
+//       chatWindow.appendChild(newMessage);
+//       messageInput.value = "";
+//   }
+// }
 
 // using js and DOM to change the appearance of page
 function toggleMode() {
