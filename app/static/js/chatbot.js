@@ -34,7 +34,9 @@ chatForm.addEventListener('submit', (event) => {
 
 function addMessageToLog(sender, message) {
     const messageElement = document.createElement('div');
+    messageElement.className = 'message ' + (sender === 'Chatbot' ? 'left' : 'right');
     messageElement.innerHTML = '<strong>' + sender + ':</strong> ' + message;
-    chatLog.appendChild(messageElement);
-    chatLog.scrollTop = chatLog.scrollHeight;
+    const chatWindow = document.getElementById('chat-window');
+    chatWindow.appendChild(messageElement);
+    chatWindow.scrollTop = chatWindow.scrollHeight;
 }
