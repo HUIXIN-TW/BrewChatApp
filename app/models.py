@@ -3,6 +3,7 @@ from app import login
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+import pytz
 
 # The user_loader decorator allows Flask-Login to load the current user and grab their id.
 @login.user_loader
@@ -32,10 +33,13 @@ class User(UserMixin, db.Model):
 
 # The Chat class represents individual chat messages. Each chat message links back to the user who sent it.
 class Chat(db.Model):
+    # Set timezone to Perth
+    perth_tz = pytz.timezone('Australia/Perth')
+
     id = db.Column(db.Integer, primary_key=True)
     body = db.Column(db.String(140))
     response = db.Column(db.String(140))
-    timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+    timestamp = db.Column(db.DateTime(timezone=True), index=True, default=datetime.now(perth_tz))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id')) # foreign key link with users database
 
     # The __repr__ method tells Python how to print objects of this class, which is going to be useful for debugging.
