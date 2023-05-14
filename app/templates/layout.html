@@ -5,18 +5,27 @@
     <meta name="viewport" content="initial-scale=1, width=device-width">
     <title>JustChat</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style_base.css') }}">
+    <!-- ICON Package -->
+     <link
+      rel="stylesheet"
+      href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"
+     >
     {% block styling %} {% endblock %}
   </head>
-  <body>
-    <div>
+  <body onload="type_effect_setting()" id="body" class="light-mode">
       <!-- header section: nav bar and welocme pic -->
       <header>
         <nav>
         {% if current_user.username %}
           <ul>
+            <li><a href="/">Chat</a></li>
+            <li><a href="/memory">Memory</a></li>
             <li><a href="/account">{{ current_user.username }} Account Info</a></li>
-            <li><a href="/logout">Log out</a></li>
+            <li class="nav_left"><a href="/logout">Log out</a></li>
           </ul>
+          <button class="mode-btn" onclick="toggleMode()">
+            <p id="mode-icon" class="ion-ios-sunny-outline"></p>
+          </button>
         {% else %}
           <ul>
             <li><a href="/register">Register</a></li>
@@ -24,7 +33,6 @@
           </ul>
         {% endif %}
           <div class="welcome-pic">
-            <p># MakeFriends</p>
             <p># HaveFun</p>
             <p># WonderfulMemory</p>
           </div>
@@ -36,9 +44,8 @@
         <script src="{{ url_for('static', filename='js/script.js')}}"></script> 
       </main>
       <!-- footer -->
-      <footer id="footer">
+      <footer>
         <p>Copyright &copy; 2023 Huixin Yang & YunChuan Kung</p>
       </footer>
-    </div>
   </body>
 </html>

@@ -1,5 +1,24 @@
 {% extends "layout.html" %}
 
+{% block styling %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style_chat.css') }}">
+{% endblock %}
+
 {% block main %}
-    <h1>This is index page</h1>
+<!-- type effect for h1 -->
+<h1 id="type-effect">Start to chat ...</h1>
+<div class ="chat-header">
+    Eliza
+</div>
+
+<div class="chat-window" id="chat-window">
+    <div class="message left">Hello there!</div>
+</div>
+<div class="chat-button-container">
+    <form id="chat-form">
+    <input id="message" class="chat-box" type="text" name="message" placeholder="Type your message...">
+    <button onclick="sendMessage()" class="chat-button" type="submit">Send</button>
+    </form>
+</div>
+
 {% endblock %}

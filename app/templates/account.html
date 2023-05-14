@@ -1,7 +1,39 @@
 {% extends "layout.html" %}
 
+{% block styling %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style_account.css') }}">
+{% endblock %}
+
 {% block main %}
+ <!-- quote section -->
+ <div class="daily-quote-container">
+    <p id="quote">
+      <span><i class="ion-quote"></i></span> &nbsp;Loading a random quote
+    </p>
+    <p id="author"></p>
+    <br >
+    <hr >
+    <button
+      id="quoteButton"
+      onclick="loadRandomQuote()"
+    >
+      New Quote
+    </button>
+
+    <p class="quote-comment">
+      ** This code includes a button element with an onclick event
+      listener that calls the loadRandomQuote function when clicked.
+      <br >The loadRandomQuote function sends a GET request to the
+      "https://api.quotable.io/random" API endpoint to retrieve a random
+      quote. Once the response is received, the function parses the JSON
+      data and extracts the quote content and author information. Then, it
+      dynamically generates HTML code to display the quote content and
+      author information within the appropriate elements in the webpage
+      using the innerHTML property.
+    </p>
+  </div>
     <h1>Account details</h1>
+    <h2>Personalise your chat page</h2>
     <form>
         <table>
             <tbody>
@@ -16,52 +48,10 @@
                     <td>
                         <input class="table-input" type="date" name="dob" value="YYYY-MM-DD" readonly>
                     </td>
-                </tr>
                 <tr>
-                    <td>MBTI Type</td>
+                    <td>Favorite Quote</td>
                     <td>
-                      <select class="table-input" name="mbti" readonly>
-                        <option value="ISTJ">ISTJ</option>
-                        <option value="ISFJ">ISFJ</option>
-                        <option value="INFJ">INFJ</option>
-                        <option value="INTJ">INTJ</option>
-                        <option value="ISTP">ISTP</option>
-                        <option value="ISFP">ISFP</option>
-                        <option value="INFP">INFP</option>
-                        <option value="INTP">INTP</option>
-                        <option value="ESTP">ESTP</option>
-                        <option value="ESFP">ESFP</option>
-                        <option value="ENFP">ENFP</option>
-                        <option value="ENTP">ENTP</option>
-                        <option value="ESTJ">ESTJ</option>
-                        <option value="ESFJ">ESFJ</option>
-                        <option value="ENFJ">ENFJ</option>
-                        <option value="ENTJ">ENTJ</option>
-                      </select>
-                    </td>
-                  </tr>
-                <tr>
-                    <td>Interests</td>
-                    <td>
-                        <input class="table-input" type="text" name="interests" value="interests" readonly>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Favorite Song</td>
-                    <td>
-                        <input class="table-input" type="text" name="favorite-song" value="Song" readonly>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Favorite Sport </td>
-                    <td>
-                        <input class="table-input" type="text" name="favorite-sport" value="Sport" readonly>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Location</td>
-                    <td>
-                        <input class="table-input" type="text" name="location" value="postcode" readonly>
+                        <input class="table-input" type="text" name="favorite-quote" value="Quote" placeholder="Have no idea? Press the New Quote button!!!" readonly>
                     </td>
                 </tr>
             </tbody>
