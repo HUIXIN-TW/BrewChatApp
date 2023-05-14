@@ -28,10 +28,13 @@ pipreqs==0.4.13
 pluggy==1.0.0
 pydantic==1.10.7
 pytest==7.3.1
+python-dateutil==2.8.2
 python-dotenv==1.0.0
+pytz==2023.3
 PyYAML==5.4
 regex==2023.5.5
 requests==2.18.4
+six==1.16.0
 SQLAlchemy==2.0.12
 tomli==2.0.1
 tqdm==4.65.0
