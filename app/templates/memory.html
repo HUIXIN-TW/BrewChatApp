@@ -1,31 +1,24 @@
 {% extends "layout.html" %}
 
 {% block styling %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style_chat.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style_memory.css') }}">
 {% endblock %}
 
 {% block main %}
 <h1>Message history</h1>
+  <div class ="chat-header">
   <form id="search-form">
     <input type="text" name="query" placeholder="Search...">
-    <button type="submit">Search</button>
+    <button type="submit" class="show-button" >Show my memory</button>
   </form>
-  <div id="search-results"></div>
-  
-<div class ="chat-header">
-    Eliza
 </div>
-
 <div class="chat-window" id="chat-window">
-    <div class="message left">Hello there!</div>
-    <div class="message right"> Hello</div>
+    <div id="search-results"></div>
 </div>
-
 <div class="chat-button-container">
-    <input id="keyword" class="chat-box" type="text" name="message" placeholder="Mark your message...">
-    <button onclick="mark()" class="chat-button" type="submit">Mark</button>
+  <input id="keyword" class="chat-box" type="text" name="message" placeholder="Mark your message...">
+  <button id="mark-button" onclick="mark()" class="chat-button" type="submit">Mark</button>
 </div>
-
 {% block script %}
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="{{ url_for('static', filename='js/search.js') }}"></script>

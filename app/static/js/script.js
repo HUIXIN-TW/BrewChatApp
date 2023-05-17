@@ -82,22 +82,6 @@ function loadRandomQuote() {
   xhttp.send();
 }
 
-// Send message and show in the chat box
-// function sendMessage() {
-//   var messageInput = document.getElementById("message");
-//   var messageText = messageInput.value;
-
-//   if (messageText.trim() !== "") {
-//       var chatWindow = document.getElementById("chat-window");
-//       var newMessage = document.createElement("div");
-//       newMessage.classList.add("message");
-//       newMessage.classList.add("right");
-//       newMessage.innerHTML = messageText;
-//       chatWindow.appendChild(newMessage);
-//       messageInput.value = "";
-//   }
-// }
-
 // using js and DOM to change the appearance of page
 function toggleMode() {
   var icon = document.getElementById("mode-icon");
@@ -132,5 +116,26 @@ function mark() {
       let newText = text.replace(re, "<span class='searchHighlight'>$&</span>"); // replace the text
       textList[i].innerHTML = newText;
     }
+
+    // Toggle button text and click event
+    let button = document.getElementById("mark-button");
+    button.innerHTML = "Clear";
+    button.onclick = clearMark;
   }
+}
+
+// clear the all marks
+function clearMark() {
+  let highlights = document.getElementsByClassName("searchHighlight");
+  while (highlights.length) {
+    highlights[0].outerHTML = highlights[0].innerHTML;
+  }
+
+    // Clear the input message
+    document.getElementById("keyword").value = "";
+    
+  // Toggle button text and click event
+  let button = document.getElementById("mark-button");
+  button.innerHTML = "Mark";
+  button.onclick = mark;
 }
