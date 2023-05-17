@@ -1,10 +1,11 @@
 from app import app, db, chatbot
-from datetime import datetime
+from datetime import datetime, date
+from random import choice
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask import (Flask, redirect, render_template, request, session,
                    url_for, flash, jsonify)
 from flask_login import current_user, login_user, logout_user, login_required
-from app.models import User, Chat
+from app.models import User, Chat, ChatPair
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
@@ -18,7 +19,7 @@ def index():
         db.session.add(chat)
         db.session.commit()
         return jsonify({'response': response})
-    return render_template('index.html')
+    return render_template('chat.html')
 
 
 @app.route('/login/', methods=['GET', 'POST'])
@@ -186,3 +187,57 @@ def search():
             # 'query' parameter is missing from form data
             return jsonify({'error': 'Missing query parameter'})
     return render_template('memory.html')
+
+@app.route('/chat/', methods=['POST', 'GET'])
+@login_required
+def chat():
+    # if request.method == 'POST':
+
+    return render_template('chat.html')
+
+
+@app.route('/get_random_user')
+@login_required
+def get_random_user():
+    random_user = generate_chat_pairs(current_user)
+    if random_user:
+        return jsonify({'random_user_name': random_user.username})
+    else:
+        return jsonify({'random_user_name': None})
+
+
+def generate_chat_pairs(users):
+    # Check if the chat pair already exists for today
+    existing_chat_pair = ChatPair.query.filter(
+        ((ChatPair.user1_id == current_user.id)) |
+        ((ChatPair.user2_id == current_user.id)),
+        ChatPair.chat_date == date.today()
+    ).first()
+
+    if existing_chat_pair:
+        random_user = User.query.filter_by(id=existing_chat_pair.user1_id).first()
+        # If the chat pair already exists, then return the random user
+        return random_user
+
+    # Retrieve all users except the current user
+    users = User.query.filter(User.id != current_user.id).all()
+   
+    if users:
+        # Select a random user from the list
+        random_user = choice(users)        
+        try:
+            # Generate and store a random user name for the current user
+            chat_pair = ChatPair(user1_id=current_user.id, user2_id=random_user.id, chat_date=date.today())
+            db.session.add(chat_pair)
+            db.session.commit()
+            return random_user
+        except Exception as e:
+            # Handle the case when adding the quote fails
+            db.session.rollback()
+            print("Failed to generate chat pairs.")
+            return None
+    else:
+        return None
+
+    return random_user
+

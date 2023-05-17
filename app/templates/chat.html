@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block main %}
+<!-- type effect for h1 -->
+<h1 id="type-effect">Chat with Today's Stranger ...</h1>
+
+<!-- TODO -->
+<button onclick="getRandomUser()">#### Who is my friend today</button>
+<h2 id="randomUserName"></h2>
+
+<div class="chat-button-container">
+    <div id="chat-log"></div>
+    <form id="chat-form">
+    <input id="message" class="chat-box" type="text" name="message" placeholder="Type your message...">
+    <button onclick="sendMessage()" class="chat-button" type="submit">Send</button>
+    </form>
+</div>
+{% endblock %}
+{% block script %}
+    <script src="{{ url_for('static', filename='js/chatwithstranger.js') }}"></script>
+{% endblock %}

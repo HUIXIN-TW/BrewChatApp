@@ -172,6 +172,8 @@ flask db migrate -m "users table"
 flask db upgrade
 flask db migrate -m "chats table"
 flask db upgrade
+flask db migrate -m "chatpairs table"
+flask db upgrade
 flask shell
 ```
 
