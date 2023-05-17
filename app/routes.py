@@ -1,5 +1,5 @@
 from app import app, db, chatbot
-
+from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask import (Flask, redirect, render_template, request, session,
                    url_for, flash, jsonify)
@@ -105,10 +105,55 @@ def register():
         return render_template('register.html')
 
 
-@app.route("/account/")
+@app.route("/account/", methods=['GET', 'POST'])
 @login_required
 def account():
+    if request.method == 'POST':
+        # Get the updated values from the form
+        dob_str = request.form['dob']
+        favorite_quote = request.form['favorite_quote']
+        
+        # Convert dob_str to a date object
+        dob = datetime.strptime(dob_str, '%Y-%m-%d').date()
+
+        # Update the user's date of birth and favorite quote
+        current_user.date_of_birth = dob
+        current_user.quote = favorite_quote
+        db.session.commit()
+        flash('Account details updated successfully!', 'success')
+        return redirect(url_for('account'))
+    else:
+        current_datetime = datetime.now().date()
+        # Get the current values from the database
+        dob = current_user.date_of_birth
+        quote = current_user.quote
+        return render_template('account.html', dob=dob, quote=quote, current_datetime=current_datetime)
     return render_template('account.html')
+
+
+@app.route('/like_quote', methods=['POST'])
+@login_required
+def like_quote():
+    # Get the quote from the request
+    quote_data = request.get_json()
+    quote = quote_data.get('quote')
+
+    # Store the liked quote in the database
+    current_user.quote = quote
+    
+    try:
+        # Attempt to commit the changes to the database
+        db.session.commit()
+        # flash('Quote added successfully!', 'success')
+        response = jsonify({'success': True})
+    except Exception as e:
+        # Handle the case when adding the quote fails
+        db.session.rollback()
+        # flash('Failed to add the quote.', 'error')
+        response = jsonify({'success': False})
+
+    return response
+
 
 
 # @app.route('/chatbot/', methods=['GET', 'POST'])
