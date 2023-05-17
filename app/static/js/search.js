@@ -15,9 +15,12 @@ $('#search-form').submit(function(event) {
           if (results.length > 0) {
             html += '<ul>';
             for (var i = 0; i < results.length; i++) {
-                html += '<li><strong>Result:</strong> ' + JSON.stringify(results[i]) + '</li>';
-                html += '<li><strong>Body:</strong> ' + results[i].body + " " + results[i].timestamp +'</li>';
-                html += '<li><strong>Response:</strong> ' + results[i].response + " " + results[i].timestamp + '</li>';
+              //Original code, keep temporary, need to delete after finalisation
+              //html += '<li><strong>Result:</strong> ' + JSON.stringify(results[i]) + '</li>';
+              //html += '<li><strong>Body:</strong>' + results[i].body + " " + results[i].timestamp +'</li>';
+              //html += '<li><strong>Response:</strong>' + results[i].response + " " + results[i].timestamp + '</li>';
+              html += '<li><div class="message right">' + results[i].body + '</li>';
+              html += '<li><div class="message left"> ' + results[i].response + '</li>';
               }
             html += '</ul>';
             $('#search-results').html(html);

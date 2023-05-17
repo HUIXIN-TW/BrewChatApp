@@ -3,9 +3,15 @@
 {% block main %}
     <form action="/register" method="post">
         <h1>REGISTER</h1>
+        {% if session['tmpName'] %}
+        <div>
+            <input autocomplete="off" autofocus class="input-group" name="username" placeholder="Username" type="text" value="{{ session['tmpName'] }}" required>
+        </div>
+        {% else %}
         <div>
             <input autocomplete="off" autofocus class="input-group" name="username" placeholder="Username" type="text" required>
         </div>
+        {% endif %}        
         <div>
             <input class="input-group" name="password" placeholder="Password" type="password" required>
         </div>

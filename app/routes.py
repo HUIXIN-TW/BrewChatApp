@@ -71,6 +71,7 @@ def register():
 
     if request.method == 'POST':
         username = request.form['username']
+        session['tmpName'] = request.form['username']
         password = request.form['password']
         confirm_password = request.form['confirm_password']
         # check if the password and confirm password are the same
@@ -83,12 +84,21 @@ def register():
         if user:
             flash('Username already exists. Please choose a different username.', category='danger')
             return redirect(url_for('register'))
+        # Additional password validation: the password minimum length should be 6.
+        if len(password) < 6:
+            flash('Password should be at least 6 characters long.', category='danger')
+            return redirect(url_for('register'))
+        # Additional password validation: requiring both letters and digits
+        if not any(char.isalpha() for char in password) or not any(char.isdigit() for char in password):
+            flash('Password should contain at least one letter and one digit.', category='danger')
+            return redirect(url_for('register'))
 
         # If the user does not exist, then the application will create a new user and add them to the database
         user = User(username=username)
         user.set_password(password)
         db.session.add(user)
         db.session.commit()
+        session.clear()
         flash('Congratulations, you are now a registered user!', category='success')
         return redirect(url_for('login'))
     else:
