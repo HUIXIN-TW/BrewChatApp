@@ -1,21 +1,26 @@
 {% extends "layout.html" %}
 
 {% block main %}
-<!-- type effect for h1 -->
-<h1 id="type-effect">Chat with Today's Stranger ...</h1>
 
-<!-- TODO -->
-<button onclick="getRandomUser()">#### Who is my friend today</button>
-<h2 id="randomUserName"></h2>
+    <!-- Button to get a random user -->
+    <button id="randomUserButton">Who is my friend today</button>
+    <h2 id="randomUserName"></h2>
 
-<div class="chat-button-container">
-    <div id="chat-log"></div>
-    <form id="chat-form">
-    <input id="message" class="chat-box" type="text" name="message" placeholder="Type your message...">
-    <button onclick="sendMessage()" class="chat-button" type="submit">Send</button>
-    </form>
-</div>
+    <!-- Chat Area -->
+    <div class="chatwindow">
+      <textarea cols="70" rows="10" id="chat" placeholder="No messages yet. Start one..."></textarea><br />
+      <form id="text-form">
+        <input type="text" id="text" placeholder="Enter your message here" />
+        <button type="submit" class="btn btn-success">SEND</button>
+      </form><br />
+      <button type="button" class="btn btn-danger" id="leaveRoomButton">Leave this Chat</button>
+    </div>
+
+
 {% endblock %}
+
 {% block script %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.1/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="{{ url_for('static', filename='js/chatwithstranger.js') }}"></script>
 {% endblock %}

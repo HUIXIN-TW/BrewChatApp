@@ -1,8 +1,7 @@
-from app import db
-from app import login
-from datetime import datetime
+from app import db, login
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from datetime import datetime
 import pytz
 
 # The user_loader decorator allows Flask-Login to load the current user and grab their id.
@@ -13,6 +12,8 @@ def load_user(id):
 # The UserMixin class provides default implementations for the methods that Flask-Login expects user objects to have.
 # The db.Model class is the base class that SQLAlchemy uses to represent models.
 class User(UserMixin, db.Model):
+    __tablename__ = 'users'
+
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), index=True, unique=True)
     date_of_birth = db.Column(db.Date)
@@ -34,24 +35,39 @@ class User(UserMixin, db.Model):
 
 # The Chat class represents individual chat messages. Each chat message links back to the user who sent it.
 class Chat(db.Model):
-    # Set timezone to Perth
-    perth_tz = pytz.timezone('Australia/Perth')
+    __tablename__ = 'robot_chats'
 
     id = db.Column(db.Integer, primary_key=True)
     body = db.Column(db.String(140))
     response = db.Column(db.String(140))
-    timestamp = db.Column(db.DateTime(timezone=True), index=True, default=datetime.now(perth_tz))
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id')) # foreign key link with users database
+    timestamp = db.Column(db.DateTime(timezone=True), index=True, default=datetime.now(pytz.timezone('Australia/Perth')))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
     # The __repr__ method tells Python how to print objects of this class, which is going to be useful for debugging.
     def __repr__(self):
         return '<Chat {}>'.format(self.body)
 
 class ChatPair(db.Model):
+    __tablename__ = 'chat_pairs'
+
     id = db.Column(db.Integer, primary_key=True)
-    user1_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    user2_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    user1_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    user2_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     chat_date = db.Column(db.Date, nullable=False)
 
     def __repr__(self):
         return '<ChatPair {}>'.format(self.id)
+
+class UserChat(db.Model):
+    __tablename__ = 'user_chats'
+
+    id = db.Column(db.Integer, primary_key=True)
+    body = db.Column(db.String(140))
+    timestamp = db.Column(db.DateTime(timezone=True), index=True, default=datetime.now(pytz.timezone('Australia/Perth')))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    pair_id = db.Column(db.Integer, db.ForeignKey('chat_pairs.id'))
+    pair = db.relationship('ChatPair', backref='conversations')
+
+
+    def __repr__(self):
+        return '<UserChat {}>'.format(self.body)
