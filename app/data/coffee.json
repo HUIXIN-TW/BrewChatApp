@@ -1,0 +1,155 @@
+{
+    "coffee_drinks": [
+      {
+        "type": "Espresso",
+        "flavour_description": "Strong and concentrated with a rich, bold flavor and a caramel-like sweetness.",
+        "recommended_origin_flavor": "Italian or Brazilian beans with chocolate and nutty notes.",
+        "fun_fact": "Espresso is the base for many other popular coffee drinks, such as lattes and cappuccinos."
+      },
+      {
+        "type": "Cappuccino",
+        "flavour_description": "A harmonious balance of bold espresso, creamy steamed milk, and airy froth, resulting in a smooth and satisfying taste.",
+        "recommended_origin_flavor": "Italian or South American beans with chocolate, nut, and caramel undertones.",
+        "fun_fact": "Cappuccino got its name from the Capuchin friars and their hooded robes, which the drink's color resembles."
+      },
+      {
+        "type": "Latte",
+        "flavour_description": "A creamy and mellow drink with a rich espresso base and a generous amount of steamed milk.",
+        "recommended_origin_flavor": "Colombian or Ethiopian beans with fruity and floral notes.",
+        "fun_fact": "Caffe latte means milk coffee in Italian, reflecting the prominent role of milk in this drink."
+      },
+      {
+        "type": "Americano",
+        "flavour_description": "A milder and larger coffee drink made by diluting espresso with hot water, resulting in a smooth and approachable flavor.",
+        "recommended_origin_flavor": "Costa Rican or Guatemalan beans with a balanced acidity and notes of chocolate and citrus.",
+        "fun_fact": "Americano was popularized during World War II by American soldiers who diluted espresso to make it taste more like the coffee they were used to."
+      },
+      {
+        "type": "Macchiato",
+        "flavour_description": "A bold espresso stained with a small amount of velvety steamed milk, resulting in a robust and intense flavor.",
+        "recommended_origin_flavor": "Ethiopian or Sumatran beans with a deep, earthy taste and hints of spice.",
+        "fun_fact": "Macchiato means stained or marked in Italian, referring to the way the milk marks or stains the espresso."
+      },
+      {
+        "type": "Mocha",
+        "flavour_description": "A delightful blend of espresso, steamed milk, and chocolate, resulting in a rich and indulgent drink with a hint of sweetness.",
+        "recommended_origin_flavor": "Brazilian or Tanzanian beans with chocolatey and nutty flavors.",
+        "fun_fact": "The term mocha originates from the port city of Mocha in Yemen, which was once a significant center for coffee trade."
+      },
+      {
+        "type": "Flat White",
+        "flavour_description": "A velvety-smooth drink with a strong espresso base and a delicate layer of microfoam, providing a balanced and rich flavor.",
+        "recommended_origin_flavor": "Papua New Guinean or Kenyan beans with a bright acidity and notes of tropical fruit.",
+        "fun_fact": "The origin of the flat white is a subject of debate, with both Australia and New Zealand claiming its invention."
+      },
+      {
+        "type": "Affogato",
+        "flavour_description": "A delightful dessert-like treat consisting of a scoop of vanilla ice cream or gelato drowned in a shot of hot espresso, creating a blend of hot and cold, bitter and sweet flavors.",
+        "recommended_origin_flavor": "Italian or Brazilian beans with a dark roast and rich, chocolatey undertones.",
+        "fun_fact": "Affogato means "drowned" in Italian, referring to the ice cream being drowned or "affogato" in espresso."
+      },
+      {
+        "type": "Irish Coffee",
+        "flavour_description": "A warming and indulgent blend of hot coffee, Irish whiskey, sugar, and topped with whipped cream, creating a sweet and boozy beverage.",
+        "recommended_origin_flavor": "Irish or Nicaraguan beans with a medium roast and notes of caramel and toasted nuts.",
+        "fun_fact": "Irish coffee was created in the 1940s by a bartender at Ireland's Shannon Airport to warm up weary travelers."
+      },
+      {
+        "type": "Cold Brew",
+        "flavour_description": "A smooth and refreshing iced coffee brewed with cold water over an extended period, resulting in low acidity and a naturally sweet taste.",
+        "recommended_origin_flavor": "Ethiopian or Colombian beans with fruity and floral notes that shine through in the cold brewing process.",
+        "fun_fact": "Cold brew coffee is steeped for an extended period, typically 12-24 hours, to extract the flavors without the use of heat."
+      },
+      {
+        "type": "Frappuccino",
+        "flavour_description": "A blended and creamy iced coffee beverage, often combined with milk, flavored syrups, and topped with whipped cream, resulting in a sweet and indulgent treat.",
+        "recommended_origin_flavor": "Mexican or Costa Rican beans with a medium roast and chocolate and caramel undertones.",
+        "fun_fact": "The Frappuccino was introduced by Starbucks in the 1990s and quickly became a popular and iconic frozen coffee drink."
+      },
+      {
+        "type": "Turkish Coffee",
+        "flavour_description": "A strong and rich coffee made by boiling finely ground coffee beans with water and sugar, resulting in a full-bodied and aromatic beverage.",
+        "recommended_origin_flavor": "Yemeni or Ethiopian beans with bold and dark flavors, often with hints of spice and chocolate.",
+        "fun_fact": "Turkish coffee has a long history and is traditionally brewed in a special pot called a \"cezve\" and served with a side of Turkish delight or other sweet treats."
+      },
+      {
+        "type": "Drip Coffee",
+        "flavour_description": "A straightforward and familiar cup of coffee brewed by pouring hot water over ground coffee beans, resulting in a well-rounded and familiar taste.",
+        "recommended_origin_flavor": "Brazilian or Colombian beans with a medium roast and a balanced profile of chocolate, nut, and caramel flavors.",
+        "fun_fact": "Drip coffee is one of the most common methods of brewing coffee in households and cafes worldwide, offering a simple and accessible way to enjoy coffee."
+      },
+      {
+        "type": "Pour Over",
+        "flavour_description": "A meticulously brewed cup of coffee made by pouring hot water over coffee grounds in a slow and controlled manner, resulting in a clean and nuanced flavor profile.",
+        "recommended_origin_flavor": "Ethiopian or Kenyan beans with vibrant acidity, floral notes, and fruity undertones.",
+        "fun_fact": "Pour-over brewing allows for precise control over the brewing process, resulting in a cup of coffee that highlights the specific characteristics of the beans used."
+      },
+      {
+        "type": "French Press",
+        "flavour_description": "A full-bodied and robust coffee made by steeping coarsely ground coffee in hot water, then separating the grounds by pressing a plunger, resulting in a rich and flavorful brew.",
+        "recommended_origin_flavor": "Indonesian or Brazilian beans with a dark roast and strong, earthy flavors.",
+        "fun_fact": "The French press was patented in the mid-1800s by a Frenchman named Attilio Calimani, although the design has evolved over the years."
+      },
+      {
+        "type": "Chemex",
+        "flavour_description": "A clean and bright coffee made using a special hourglass-shaped glass brewer and a thick filter, resulting in a smooth and crisp flavor profile.",
+        "recommended_origin_flavor": "Ethiopian or Costa Rican beans with floral aromas, bright acidity, and citrusy or berry notes.",
+        "fun_fact": "The Chemex brewer was invented in 1941 by Dr. Peter Schlumbohm, a chemist with a passion for creating a visually appealing and scientifically sound coffee brewing device."
+      },
+      {
+        "type": "AeroPress",
+        "flavour_description": "A versatile and portable brewing device that uses air pressure to extract the flavors from coffee grounds, resulting in a smooth and clean cup with a wide range of brewing possibilities.",
+        "recommended_origin_flavor": "Guatemalan or Ethiopian beans with a medium roast and a balanced profile of acidity, fruitiness, and chocolate notes.",
+        "fun_fact": "The AeroPress was invented by Alan Adler, a Stanford University engineer and inventor, and has gained a devoted following among coffee enthusiasts for its ease of use and brewing consistency."
+      },
+      {
+        "type": "Vietnamese Iced Coffee",
+        "flavour_description": "Strong coffee brewed with a metal drip filter, served over ice, and often mixed with condensed milk for a sweet and creamy taste with a hint of bitterness.",
+        "recommended_origin_flavor": "Vietnamese or Brazilian beans with a dark roast and chocolate and nutty undertones.",
+        "fun_fact": "Vietnamese Iced Coffee, also known as \"Cà phê đá,\" is a popular and beloved drink in Vietnam, reflecting the country's unique coffee culture."
+      },
+      {
+        "type": "Cortado",
+        "flavour_description": "A small and balanced drink made by combining equal parts espresso and warm milk, resulting in a smooth and velvety texture with a well-rounded flavor.",
+        "recommended_origin_flavor": "Colombian or Guatemalan beans with a medium roast and a balanced profile of chocolate, nuts, and subtle acidity.",
+        "fun_fact": "The word \"cortado\" comes from the Spanish verb \"cortar,\" which means \"to cut,\" referring to the way the espresso's acidity is balanced and \"cut\" by the milk."
+      },
+      {
+        "type": "Ristretto",
+        "flavour_description": "An intensely concentrated shot of espresso made with a smaller amount of water, resulting in a bold and robust flavor with less bitterness.",
+        "recommended_origin_flavor": "Ethiopian or Italian beans with a dark roast and strong, complex flavors.",
+        "fun_fact": "The word \"ristretto\" comes from the Italian word meaning \"restricted\" or \"limited,\" as the amount of water used in brewing is restricted, intensifying the flavors of the coffee."
+      },
+      {
+        "type": "Vienna Coffee",
+        "flavour_description": "A combination of espresso, whipped cream, and chocolate sprinkles or shavings, resulting in a decadent and luxurious coffee drink with a sweet and indulgent taste.",
+        "recommended_origin_flavor": "Austrian or Brazilian beans with a medium to dark roast and a balance of chocolate, caramel, and nutty flavors.",
+        "fun_fact": "Vienna Coffee is named after the city of Vienna, Austria, where it is said to have been created and popularized in the 19th century."
+      },
+      {
+        "type": "Greek Frappé",
+        "flavour_description": "A frothy and refreshing iced coffee made by mixing instant coffee, sugar, and water, then shaken or blended to create a creamy foam layer on top.",
+        "recommended_origin_flavor": "Greek or Brazilian beans with a medium to dark roast and a balanced profile of chocolate, nut, and caramel flavors.",
+        "fun_fact": "The Greek Frappé was invented in the late 1950s by a Nescafé representative during a trade fair in Thessaloniki, Greece, and has since become a beloved national drink."
+      },
+      {
+        "type": "Red Eye",
+        "flavour_description": "A strong and bold coffee drink made by adding a shot of espresso to a cup of brewed coffee, providing an extra kick of caffeine.",
+        "recommended_origin_flavor": "Brazilian or Sumatran beans with a dark roast and robust, earthy flavors.",
+        "fun_fact": "The term \"red eye\" refers to the redness and tiredness in one's eyes that may be alleviated by consuming this strong coffee concoction."
+      },
+      {
+        "type": "Ethiopian Coffee Ceremony",
+        "flavour_description": "Ethiopian coffee brewed in a traditional ceremony involving roasting, grinding, and brewing the beans, resulting in a rich and aromatic cup with fruity and floral undertones.",
+        "recommended_origin_flavor": "Ethiopian beans, such as Sidamo or Yirgacheffe, with vibrant acidity, fruity notes, and floral aromas.",
+        "fun_fact": "The Ethiopian Coffee Ceremony is a significant cultural event in Ethiopia, representing hospitality and friendship, and often accompanied by the burning of incense and the sharing of traditional snacks."
+      },
+      {
+        "type": "Bulletproof Coffee",
+        "flavour_description": "Coffee blended with grass-fed butter and MCT oil, resulting in a creamy and rich beverage with a boost of energy and prolonged satiety.",
+        "recommended_origin_flavor": "Colombian or Guatemalan beans with a medium roast and a balanced profile of chocolate, nuts, and caramel.",
+        "fun_fact": "Bulletproof Coffee gained popularity as part of the ketogenic diet and was popularized by biohacker Dave Asprey, who claims it provides mental clarity and sustained energy levels."
+      }
+    ]
+  }
+  

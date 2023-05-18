@@ -1,0 +1,13 @@
+{
+    "positive": [
+      "Maybe you could celebrate by doing something you enjoy?",
+      "How about treating yourself to a nice meal or doing something fun?",
+      "Perhaps you could reward yourself by watching your favorite movie or show?"
+    ],
+    "negative": [
+      "Maybe you could talk to someone you trust about what's going on?",
+      "How about doing something to take your mind off things, like going for a run or playing a game?",
+      "I'm here for you. Perhaps you could try some meditation or journaling to help you feel better?"
+    ]
+  }
+  

@@ -14,7 +14,7 @@ from .handleStranger import generate_chat_pairs, get_today_chat_pair
 @login_required
 def index():
     if request.method == 'POST':
-        message = request.form['message']
+        message = request.form['message'].lower()
         response = chatbot.get_response(message)
         # Create a new Chat instance with the user input and chatbot response, and add it to the database.
         chat = Chat(body=message, response=response, speaker=current_user)
@@ -185,6 +185,9 @@ def search():
 @app.route('/chat/')
 @login_required
 def chat():
+    if session.get('random_user_name') is None:
+        get_random_user()
+
     username = current_user.username
     # Check if the chat pair already exists for today
     if session.get('chat_pair_id') is None:
@@ -200,6 +203,7 @@ def chat():
 @app.route('/get_random_user')
 @login_required
 def get_random_user():
+    print("==== get_random_user ====")
     random_user = generate_chat_pairs(current_user)
     if random_user:
         print(f'==== random_user: {random_user} ====')
