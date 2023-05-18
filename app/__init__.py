@@ -4,7 +4,7 @@ from .chatbot import ElizaChatbot
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
-
+from flask_socketio import SocketIO, join_room, leave_room, send, emit
 
 # Flask initialization
 app = Flask(__name__)
@@ -23,6 +23,8 @@ migrate = Migrate(app, db)
 login = LoginManager(app)
 login.login_view = 'login'
 
+# socketio initialization
+socketio = SocketIO(app)
 
 # print(dir(eliza))
 # ['__builtins__', '__cached__', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__path__', '__spec__']
@@ -46,4 +48,4 @@ from app import routes, models
 
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    socketio.run(app)

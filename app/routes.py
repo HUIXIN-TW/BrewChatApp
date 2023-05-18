@@ -1,11 +1,13 @@
-from app import app, db, chatbot
+from app import app, db, chatbot, socketio
 from datetime import datetime, date
-from random import choice
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask import (Flask, redirect, render_template, request, session,
                    url_for, flash, jsonify)
 from flask_login import current_user, login_user, logout_user, login_required
-from app.models import User, Chat, ChatPair
+from flask_socketio import SocketIO, join_room, leave_room, send, emit
+from app.models import User, Chat, ChatPair, UserChat
+from .handleStranger import generate_chat_pairs, get_today_chat_pair
+
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
@@ -19,7 +21,7 @@ def index():
         db.session.add(chat)
         db.session.commit()
         return jsonify({'response': response})
-    return render_template('chat.html')
+    return render_template('index.html')
 
 
 @app.route('/login/', methods=['GET', 'POST'])
@@ -53,8 +55,7 @@ def login():
         if not next_page or url_parse(next_page).netloc != '':
             next_page = url_for('index')
         return redirect(next_page)
-    else:
-        return render_template('login.html')
+    return render_template('login.html')
 
 
 @app.route('/logout/')
@@ -110,26 +111,32 @@ def register():
 @login_required
 def account():
     if request.method == 'POST':
+        try:
         # Get the updated values from the form
-        dob_str = request.form['dob']
-        favorite_quote = request.form['favorite_quote']
-        
-        # Convert dob_str to a date object
-        dob = datetime.strptime(dob_str, '%Y-%m-%d').date()
+            dob_str = request.form['dob']
+            favorite_quote = request.form['favorite_quote']
+            
+            # Convert dob_str to a date object
+            dob = datetime.strptime(dob_str, '%Y-%m-%d').date()
 
-        # Update the user's date of birth and favorite quote
-        current_user.date_of_birth = dob
-        current_user.quote = favorite_quote
-        db.session.commit()
-        flash('Account details updated successfully!', 'success')
+            # Update the user's date of birth and favorite quote
+            current_user.date_of_birth = dob
+            current_user.quote = favorite_quote
+            db.session.commit()
+            flash('Account details updated successfully!', 'success')
+        except Exception as e:
+            # Handle the case when updating the account details fails
+            db.session.rollback()
+            flash('Failed to update account details.', 'error')
         return redirect(url_for('account'))
-    else:
-        current_datetime = datetime.now().date()
-        # Get the current values from the database
-        dob = current_user.date_of_birth
-        quote = current_user.quote
-        return render_template('account.html', dob=dob, quote=quote, current_datetime=current_datetime)
-    return render_template('account.html')
+    
+    # Get the current date
+    current_datetime = datetime.now().date()
+    
+    # Get the current values from the database
+    dob = current_user.date_of_birth
+    quote = current_user.quote
+    return render_template('account.html', dob=dob, quote=quote, current_datetime=current_datetime)
 
 
 @app.route('/like_quote', methods=['POST'])
@@ -156,20 +163,6 @@ def like_quote():
     return response
 
 
-
-# @app.route('/chatbot/', methods=['GET', 'POST'])
-# @login_required
-# def chatbot_response():
-#     if request.method == 'POST':
-#         message = request.form['message']
-#         response = chatbot.get_response(message)
-#         # Create a new Chat instance with the user input and chatbot response, and add it to the database.
-#         chat = Chat(body=message, response=response, speaker=current_user)
-#         db.session.add(chat)
-#         db.session.commit()
-#         return jsonify({'response': response})
-#     return render_template('chatbot.html')
-
 @app.route('/memory/', methods=['GET', 'POST'])
 @login_required
 def search():
@@ -188,12 +181,20 @@ def search():
             return jsonify({'error': 'Missing query parameter'})
     return render_template('memory.html')
 
-@app.route('/chat/', methods=['POST', 'GET'])
+
+@app.route('/chat/')
 @login_required
 def chat():
-    # if request.method == 'POST':
+    username = current_user.username
+    # Check if the chat pair already exists for today
+    if session.get('chat_pair_id') is None:
+        session['chat_pair_id'] = get_today_chat_pair().id
+    print(f'==== chat_pair_session: {session.get("chat_pair_id")} ====')
 
-    return render_template('chat.html')
+    room = session.get("chat_pair_id")
+    print(f'==== room: {room} ====')
+
+    return render_template('chat.html', username=username, room=room)
 
 
 @app.route('/get_random_user')
@@ -201,43 +202,28 @@ def chat():
 def get_random_user():
     random_user = generate_chat_pairs(current_user)
     if random_user:
+        print(f'==== random_user: {random_user} ====')
+        session['random_user_name'] = random_user.username
         return jsonify({'random_user_name': random_user.username})
     else:
         return jsonify({'random_user_name': None})
 
 
-def generate_chat_pairs(users):
-    # Check if the chat pair already exists for today
-    existing_chat_pair = ChatPair.query.filter(
-        ((ChatPair.user1_id == current_user.id)) |
-        ((ChatPair.user2_id == current_user.id)),
-        ChatPair.chat_date == date.today()
-    ).first()
+@socketio.on('join', namespace='/chat/')
+def join(message):
+    room = session.get("chat_pair_id")
+    join_room(room)
+    emit('status', {'msg': current_user.username + ' has entered the room.'}, room=room)
 
-    if existing_chat_pair:
-        random_user = User.query.filter_by(id=existing_chat_pair.user1_id).first()
-        # If the chat pair already exists, then return the random user
-        return random_user
 
-    # Retrieve all users except the current user
-    users = User.query.filter(User.id != current_user.id).all()
-   
-    if users:
-        # Select a random user from the list
-        random_user = choice(users)        
-        try:
-            # Generate and store a random user name for the current user
-            chat_pair = ChatPair(user1_id=current_user.id, user2_id=random_user.id, chat_date=date.today())
-            db.session.add(chat_pair)
-            db.session.commit()
-            return random_user
-        except Exception as e:
-            # Handle the case when adding the quote fails
-            db.session.rollback()
-            print("Failed to generate chat pairs.")
-            return None
-    else:
-        return None
+@socketio.on('text', namespace='/chat/')
+def text(message):
+    room = session.get("chat_pair_id")
+    emit('message', {'msg': current_user.username + ':' + message['msg']}, room=room)
 
-    return random_user
 
+@socketio.on('left', namespace='/chat/')
+def left():
+    room = session.get("chat_pair_id")
+    leave_room(room)
+    emit('status', {'msg': current_user.username + ' has left the room.'}, room=room)
