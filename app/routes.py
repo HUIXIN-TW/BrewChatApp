@@ -1,10 +1,11 @@
 from app import app, db, chatbot
-
+from datetime import datetime, date
+from random import choice
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask import (Flask, redirect, render_template, request, session,
                    url_for, flash, jsonify)
 from flask_login import current_user, login_user, logout_user, login_required
-from app.models import User, Chat
+from app.models import User, Chat, ChatPair
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
@@ -18,7 +19,7 @@ def index():
         db.session.add(chat)
         db.session.commit()
         return jsonify({'response': response})
-    return render_template('index.html')
+    return render_template('chat.html')
 
 
 @app.route('/login/', methods=['GET', 'POST'])
@@ -105,10 +106,55 @@ def register():
         return render_template('register.html')
 
 
-@app.route("/account/")
+@app.route("/account/", methods=['GET', 'POST'])
 @login_required
 def account():
+    if request.method == 'POST':
+        # Get the updated values from the form
+        dob_str = request.form['dob']
+        favorite_quote = request.form['favorite_quote']
+        
+        # Convert dob_str to a date object
+        dob = datetime.strptime(dob_str, '%Y-%m-%d').date()
+
+        # Update the user's date of birth and favorite quote
+        current_user.date_of_birth = dob
+        current_user.quote = favorite_quote
+        db.session.commit()
+        flash('Account details updated successfully!', 'success')
+        return redirect(url_for('account'))
+    else:
+        current_datetime = datetime.now().date()
+        # Get the current values from the database
+        dob = current_user.date_of_birth
+        quote = current_user.quote
+        return render_template('account.html', dob=dob, quote=quote, current_datetime=current_datetime)
     return render_template('account.html')
+
+
+@app.route('/like_quote', methods=['POST'])
+@login_required
+def like_quote():
+    # Get the quote from the request
+    quote_data = request.get_json()
+    quote = quote_data.get('quote')
+
+    # Store the liked quote in the database
+    current_user.quote = quote
+    
+    try:
+        # Attempt to commit the changes to the database
+        db.session.commit()
+        # flash('Quote added successfully!', 'success')
+        response = jsonify({'success': True})
+    except Exception as e:
+        # Handle the case when adding the quote fails
+        db.session.rollback()
+        # flash('Failed to add the quote.', 'error')
+        response = jsonify({'success': False})
+
+    return response
+
 
 
 # @app.route('/chatbot/', methods=['GET', 'POST'])
@@ -141,3 +187,57 @@ def search():
             # 'query' parameter is missing from form data
             return jsonify({'error': 'Missing query parameter'})
     return render_template('memory.html')
+
+@app.route('/chat/', methods=['POST', 'GET'])
+@login_required
+def chat():
+    # if request.method == 'POST':
+
+    return render_template('chat.html')
+
+
+@app.route('/get_random_user')
+@login_required
+def get_random_user():
+    random_user = generate_chat_pairs(current_user)
+    if random_user:
+        return jsonify({'random_user_name': random_user.username})
+    else:
+        return jsonify({'random_user_name': None})
+
+
+def generate_chat_pairs(users):
+    # Check if the chat pair already exists for today
+    existing_chat_pair = ChatPair.query.filter(
+        ((ChatPair.user1_id == current_user.id)) |
+        ((ChatPair.user2_id == current_user.id)),
+        ChatPair.chat_date == date.today()
+    ).first()
+
+    if existing_chat_pair:
+        random_user = User.query.filter_by(id=existing_chat_pair.user1_id).first()
+        # If the chat pair already exists, then return the random user
+        return random_user
+
+    # Retrieve all users except the current user
+    users = User.query.filter(User.id != current_user.id).all()
+   
+    if users:
+        # Select a random user from the list
+        random_user = choice(users)        
+        try:
+            # Generate and store a random user name for the current user
+            chat_pair = ChatPair(user1_id=current_user.id, user2_id=random_user.id, chat_date=date.today())
+            db.session.add(chat_pair)
+            db.session.commit()
+            return random_user
+        except Exception as e:
+            # Handle the case when adding the quote fails
+            db.session.rollback()
+            print("Failed to generate chat pairs.")
+            return None
+    else:
+        return None
+
+    return random_user
+

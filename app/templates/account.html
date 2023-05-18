@@ -19,6 +19,12 @@
     >
       New Quote
     </button>
+    <button
+    id="likequoteButton"
+    onclick="likeQuote()"
+    >
+    Like
+    </button>
 
     <p class="quote-comment">
       ** This code includes a button element with an onclick event
@@ -34,7 +40,7 @@
   </div>
     <h1>Account details</h1>
     <h2>Personalise your chat page</h2>
-    <form>
+    <form action="/account" method="post">
         <table>
             <tbody>
                 <tr>
@@ -46,17 +52,37 @@
                 <tr>
                     <td>Date of Birth</td>
                     <td>
-                        <input class="table-input" type="date" name="dob" value="YYYY-MM-DD" readonly>
+                      {% if current_user.date_of_birth %}
+                          <input class="table-input" type="date" name="dob" value="{{ current_user.date_of_birth }}" readonly>
+                      {% else %}
+                          <input class="table-input" type="date" name="dob" placeholder="YYYY-MM-DD">
+                      {% endif %}
                     </td>
+                </tr>
                 <tr>
                     <td>Favorite Quote</td>
                     <td>
-                        <input class="table-input" type="text" name="favorite-quote" value="Quote" placeholder="Have no idea? Press the New Quote button!!!" readonly>
+                      {% if current_user.quote %}
+                          <input id="myquote" class="table-input" type="text" name="favorite_quote" value="{{ current_user.quote }}" readonly>
+                      {% else %}
+                          <input id="myquote" class="table-input" type="text" name="favorite_quote" value="Quote" placeholder="Have no idea? Press the New Quote button!!!" readonly>
+                      {% endif %}
                     </td>
                 </tr>
             </tbody>
         </table>
+        <button class="btn" id="save-btn" type="submit">Save</button>
     </form>
     <button class="btn" id="edit-btn">Edit</button>
-    <button  class="btn" id="save-btn">Save</button>
+
+    <!-- HTML code for displaying the image if the current month matches a specific month -->
+    {% if current_datetime.month == current_user.date_of_birth.month %}
+    <img src="https://ichef.bbci.co.uk/food/ic/food_16x9_1600/recipes/rainbow_cake_20402_16x9.jpg" alt="Birthday Cake">
+    {% endif %}
+
+{% endblock %}
+
+{% block script %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="{{ url_for('static', filename='js/account.js') }}"></script>
 {% endblock %}

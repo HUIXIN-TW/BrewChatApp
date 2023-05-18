@@ -15,7 +15,8 @@ def load_user(id):
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), index=True, unique=True)
-    email = db.Column(db.String(120), index=True, unique=True)
+    date_of_birth = db.Column(db.Date)
+    quote = db.Column(db.String(250))
     password_hash = db.Column(db.String(128))
     chats = db.relationship('Chat', backref='speaker', lazy='dynamic')
 
@@ -45,3 +46,12 @@ class Chat(db.Model):
     # The __repr__ method tells Python how to print objects of this class, which is going to be useful for debugging.
     def __repr__(self):
         return '<Chat {}>'.format(self.body)
+
+class ChatPair(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user1_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    user2_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    chat_date = db.Column(db.Date, nullable=False)
+
+    def __repr__(self):
+        return '<ChatPair {}>'.format(self.id)

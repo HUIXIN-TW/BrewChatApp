@@ -19,10 +19,9 @@
   <input id="keyword" class="chat-box" type="text" name="message" placeholder="Mark your message...">
   <button id="mark-button" onclick="mark()" class="chat-button" type="submit">Mark</button>
 </div>
+{% endblock %}
+
 {% block script %}
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="{{ url_for('static', filename='js/search.js') }}"></script>
 {% endblock %}
-
-{% endblock %}
-
