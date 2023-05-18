@@ -39,7 +39,13 @@
     </p>
   </div>
     <h1>Account details</h1>
-    <h2>Personalise your chat page</h2>
+      <!-- HTML code for displaying the image if the current month matches a specific month -->
+      {% if current_datetime.month == current_user.date_of_birth.month %}
+      <h2 id="type-effect"> Your special month! The best wishes come from the BrewChat Team!</h2>
+      <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/73133939-6919-42de-b192-218e88190c7a/de86vp2-81d85e79-51fe-424e-8517-8b9d08c9cc12.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzczMTMzOTM5LTY5MTktNDJkZS1iMTkyLTIxOGU4ODE5MGM3YVwvZGU4NnZwMi04MWQ4NWU3OS01MWZlLTQyNGUtODUxNy04YjlkMDhjOWNjMTIuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.B9j8hgNvRDLTOD0Hnl3sq7Ul-KPptJ8cUwac6a94beY" alt="Birthday Cake">
+      {% else %}
+      <h2>Personalise your experience</h2>
+      {% endif %}
     <form action="/account" method="post">
         <table>
             <tbody>
@@ -71,14 +77,10 @@
                 </tr>
             </tbody>
         </table>
-        <button class="btn" id="save-btn" type="submit">Save</button>
+          <button class="btn save-btn" id="save-btn" onclick="Save()"  type="submit">Save</button>
     </form>
+    <br>
     <button class="btn" id="edit-btn">Edit</button>
-
-    <!-- HTML code for displaying the image if the current month matches a specific month -->
-    {% if current_datetime.month == current_user.date_of_birth.month %}
-    <img src="https://ichef.bbci.co.uk/food/ic/food_16x9_1600/recipes/rainbow_cake_20402_16x9.jpg" alt="Birthday Cake">
-    {% endif %}
 
 {% endblock %}
 

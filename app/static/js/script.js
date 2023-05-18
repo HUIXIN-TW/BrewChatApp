@@ -10,31 +10,6 @@ closeButtons.forEach(function (button) {
   });
 });
 
-// get edit and save btn
-const editBtn = document.getElementById("edit-btn");
-const saveBtn = document.getElementById("save-btn");
-const inputElems = document.querySelectorAll("input[readonly]");
-const selectElems = document.querySelectorAll("select[readonly]");
-
-// toggle read-only
-editBtn.addEventListener("click", function() {
-  inputElems.forEach(function(elem) {
-    elem.removeAttribute("readonly");
-  });
-  selectElems.forEach(function(elem) {
-    elem.removeAttribute("readonly");
-  });
-});
-
-saveBtn.addEventListener("click", function() {
-  inputElems.forEach(function(elem) {
-    elem.setAttribute("readonly", "");
-  });
-  selectElems.forEach(function(elem) {
-    elem.setAttribute("readonly", "");
-  });
-});
-
 function type_effect_setting() {
   // create a typing effect
   var count = 0;
@@ -61,27 +36,6 @@ function typingEffect(word, idName, count, speed) {
   }
 }
 
-// load a random quote from an API
-function loadRandomQuote() {
-  var xhttp = new XMLHttpRequest();
-  const method = "GET";
-  const url = "https://api.quotable.io/random";
-  xhttp.open(method, url, true);
-
-  xhttp.onreadystatechange = function () {
-    if (this.readyState == 4 && this.status == 200) {
-      var apiQuotes = JSON.parse(this.responseText);
-      var randomQuoteContent = apiQuotes.content;
-      var randomQuoteAuthor = apiQuotes.author || "- Anonymous";
-      var randomQuoteText =
-        '<span><i class="ion-quote"></i></span> &nbsp; ' + randomQuoteContent;
-      document.getElementById("quote").innerHTML = randomQuoteText;
-      document.getElementById("author").innerHTML = "- " + randomQuoteAuthor;
-    }
-  };
-  xhttp.send();
-}
-
 // using js and DOM to change the appearance of page
 function toggleMode() {
   var icon = document.getElementById("mode-icon");
@@ -103,39 +57,4 @@ function toggleMode() {
       icon.classList.remove("dark-mode");
     });
   }
-}
-
-// mark the keyword in the message
-function mark() {
-  let keyWord = document.getElementById("keyword").value.trim();
-  if (keyWord !== "") {
-    let textList = document.querySelectorAll(".message.left, .message.right");
-    for (let i = 0; i < textList.length; i++) {
-      let text = textList[i].innerHTML;
-      let re = new RegExp(keyWord, "gi"); // create a regex, g=global match, i=case insensitive
-      let newText = text.replace(re, "<span class='searchHighlight'>$&</span>"); // replace the text
-      textList[i].innerHTML = newText;
-    }
-
-    // Toggle button text and click event
-    let button = document.getElementById("mark-button");
-    button.innerHTML = "Clear";
-    button.onclick = clearMark;
-  }
-}
-
-// clear the all marks
-function clearMark() {
-  let highlights = document.getElementsByClassName("searchHighlight");
-  while (highlights.length) {
-    highlights[0].outerHTML = highlights[0].innerHTML;
-  }
-
-    // Clear the input message
-    document.getElementById("keyword").value = "";
-    
-  // Toggle button text and click event
-  let button = document.getElementById("mark-button");
-  button.innerHTML = "Mark";
-  button.onclick = mark;
 }
