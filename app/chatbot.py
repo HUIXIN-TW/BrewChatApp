@@ -1,4 +1,5 @@
 import nltk
+import json
 from nltk.chat import eliza
 from nltk.sentiment import SentimentIntensityAnalyzer
 
@@ -11,13 +12,8 @@ class ElizaChatbot:
         nltk.download('words')
         nltk.download('stopwords')
         nltk.download('vader_lexicon')
-
-        # Load pairs for the chatbot to use
-        my_pairs = self.load_pairs()
+        self.pairs = self.load_pairs("app/data/coffee_script.txt") 
         self.suggestions = self.load_suggestions()
-
-        # Combine pairs and initialize chatbot
-        self.pairs =  my_pairs + eliza.pairs
         self.chatbot = eliza.Chat(self.pairs, eliza.reflections)
         self.sentiment_analyzer = SentimentIntensityAnalyzer()
 
@@ -38,32 +34,26 @@ class ElizaChatbot:
         
         response += suggestion
         return response
+        
 
-    def load_pairs(self):
-        my_pairs = (
-            ('hi|hey|hi, there', ('Hello, how are you?', 'Hi, how are you?')),
-            ('Remy need (.*) (.*) (.*)', ('%1, %2, %3 are good things to need.', 'I love %1, %2, %3')),
-            ('Huixin need (.*) (.*)', ('Why do you need %1 %2?', 'Are you sure you need %1 and %2?'))
-        )
-        return my_pairs
+    def load_pairs(self, file_name):
+        result = []
+        with open(file_name, "r") as file:
+            for line in file:
+                pattern, response_part = line.strip().split('::')
+                patterns = pattern.strip()
+                responses = tuple(response.strip() for response in response_part.split(';'))
+                result.append((patterns, responses))
+            pairs = tuple(result)
+        return pairs
+
 
     def load_suggestions(self):
+        with open("app/data/suggestions.json", "r") as file:
+            suggestions_data = json.load(file)
+
         my_suggestions = {
-            'positive': [
-                "Maybe you could celebrate by doing something you enjoy?",
-                "How about treating yourself to a nice meal or doing something fun?",
-                "Perhaps you could reward yourself by watching your favorite movie or show?",
-            ],
-            'negative': [
-                "Maybe you could talk to someone you trust about what's going on?",
-                "How about doing something to take your mind off things, like going for a run or playing a game?",
-                "I'm here for you. Perhaps you could try some meditation or journaling to help you feel better?",
-            ]
+            'positive': suggestions_data['positive'],
+            'negative': suggestions_data['negative']
         }
         return my_suggestions
-
-
-# Get a response to a user message
-# my_chatbot = Chatbot()
-# response = my_chatbot.get_response("I'm feeling sad.")
-# print(response)

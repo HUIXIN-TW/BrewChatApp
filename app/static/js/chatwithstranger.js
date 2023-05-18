@@ -46,11 +46,17 @@ $(document).ready(function(){
 
   // Function to get a random user
   function getRandomUser() {
+    console.log('Getting random user...');
     $.ajax({
       url: '/get_random_user',
       method: 'GET',
       success: ({ random_user_name }) => {
-        $('#randomUserName').text(random_user_name);
+        if (!random_user_name) {
+          $('#randomUserName').text('No user available');
+        }
+        else {
+          $('#randomUserName').text(random_user_name);
+        }
       },
       error: (error) => {
         console.error('Failed to get random user:', error);

@@ -168,11 +168,7 @@ Initialize database
 
 ```bash
 flask db init
-flask db migrate -m "users table"
-flask db upgrade
-flask db migrate -m "chats table"
-flask db upgrade
-flask db migrate -m "chatpairs table"
+flask db migrate -m "build tables"
 flask db upgrade
 flask shell
 ```
