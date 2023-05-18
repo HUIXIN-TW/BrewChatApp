@@ -4,9 +4,10 @@
 
     <!-- Button to get a random user -->
     <button id="randomUserButton">Who is my friend today</button>
-    <h2 id="randomUserName"></h2>
+    <p id="randomUserName"></p>
 
     <!-- Chat Area -->
+    <h2 id="type-effect">Chat with Stranger</h2>
     <div class="chatwindow">
       <textarea cols="70" rows="10" id="chat" placeholder="No messages yet. Start one..."></textarea><br />
       <form id="text-form">
@@ -22,5 +23,5 @@
 {% block script %}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.1/socket.io.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="{{ url_for('static', filename='js/chatwithstranger.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/chatuser.js') }}"></script>
 {% endblock %}

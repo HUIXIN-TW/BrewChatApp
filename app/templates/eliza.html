@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block styling %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style_chat.css') }}">
+{% endblock %}
+
+{% block main %}
+<!-- type effect for h1 -->
+<h1 id="type-effect">Start to chat ...</h1>
+<div class="page-container">
+    <div class="left-side">
+        <!-- Content for the left side -->
+        {% if current_datetime.month == current_user.date_of_birth.month %}
+        <img src="https://i.pinimg.com/originals/25/49/de/2549de05016573f8a1b7e0eebf3cba45.jpg" alt="Birthday" class="round-image">
+        {% else %}
+        <img src="https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvdjExNTctaW5zdGFncmFtc3RvcnktMDMuanBn.jpg?s=Awmb2htfI0-MYLHxZzuW8oB0U5RI8XFv8CCM4DjQzkA" alt="Minnaso Coffee" class="round-image">
+        {% endif %}
+      </div>
+      <div class="center-part">
+<div class ="chat-header">
+    Eliza
+</div>
+
+<div class="chat-window" id="chat-window">
+</div>
+<div class="chat-button-container">
+    <div id="chat-log"></div>
+    <form id="chat-form">
+    <input id="message" class="chat-box" type="text" name="message" placeholder="Type your message...">
+    <button onclick="sendMessage()" class="chat-button" type="submit">Send</button>
+    </form>
+</div>
+</div>
+<div class="right-side">
+    <!-- Content for the right side -->
+    {% if current_datetime.month == current_user.date_of_birth.month %}
+    <img src="https://i.pinimg.com/originals/25/49/de/2549de05016573f8a1b7e0eebf3cba45.jpg" alt="Birthday" class="round-image">
+    {% else %}
+    <img src="https://w0.peakpx.com/wallpaper/778/838/HD-wallpaper-bear-ear-iphone-cat-cute-cartoon-cartoon-brown-bear-cartoon-thumbnail.jpg" alt="Minnaso Coffee" class="round-image">
+    {% endif %}
+</div>
+
+</div>
+{% endblock %}
+{% block script %}
+    <script src="{{ url_for('static', filename='js/chatbot.js') }}"></script>
+{% endblock %}

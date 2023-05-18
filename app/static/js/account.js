@@ -63,14 +63,14 @@ fetch('/like_quote', {
 const editBtn = document.getElementById("edit-btn");
 const saveBtn = document.getElementById("save-btn");
 const inputElems = document.querySelectorAll("input[readonly]");
-const selectElems = document.querySelectorAll("select[readonly]");
+const textElems = document.querySelectorAll("textarea[readonly]");
 
 // toggle read-only
 editBtn.addEventListener("click", function() {
   inputElems.forEach(function(elem) {
     elem.removeAttribute("readonly");
   });
-  selectElems.forEach(function(elem) {
+  textElems.forEach(function(elem) {
     elem.removeAttribute("readonly");
   });
 });
@@ -79,7 +79,7 @@ saveBtn.addEventListener("click", function() {
   inputElems.forEach(function(elem) {
     elem.setAttribute("readonly", "");
   });
-  selectElems.forEach(function(elem) {
+  textElems.forEach(function(elem) {
     elem.setAttribute("readonly", "");
   });
 });

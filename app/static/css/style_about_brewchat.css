@@ -108,6 +108,11 @@
     color: #f7c04a;
 }
 
+.text-left {
+    padding-left: 20px;
+    text-align: left;
+}
+
 strong{
     color:orange;
 }
