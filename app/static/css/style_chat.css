@@ -153,12 +153,25 @@
     
 }
 
-.searchHighlight {
-    background-color: yellow;
-    text-decoration: underline;
-    color: black;
-    font-style: italic;
-    font-weight: bold;
+.round-image {
+    border-radius: 45%;
+    width: 200px; 
+    height: auto; 
+  }
+
+/*page container div into three part*/
+.page-container {
+    display: grid;
+    grid-template-columns: 1fr 800px 1fr;
+    gap: 10px;
+    height:100%;
   }
   
-
+  .left-side,
+  .right-side {
+    background-color: transparent;
+  }
+  
+  .center-part {
+    background-color: transparent;
+  }

@@ -1,0 +1,113 @@
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.button_1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 200px;
+    background: url('https://img.freepik.com/free-vector/hand-holding-phone-with-conversation-girl-chat-bot-mobile-app-talking-robot-online-flat-vector-illustration-technology-assistance-concept-banner-website-design-landing-page_74855-24649.jpg?size=626&ext=jpg&ga=GA1.1.319712729.1684336727&semt=sph') center/cover;
+    margin-right: 20px;
+    cursor: pointer;
+    transition: transform 0.3s ease;  
+}
+
+.button_2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 200px;
+    background: url('https://img.freepik.com/free-vector/chat-conversation-mobile-phone-screen-tiny-people-group-persons-chatting-messenger-flat-vector-illustration-social-media-community-concept-banner-website-design-landing-web-page_74855-21724.jpg') center/cover;
+    margin-right: 20px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    margin-left: 50px;
+}
+
+.button_1:hover, .button_2:hover  {
+    transform: scale(1.01);
+    opacity: 0.5;
+}
+
+.button-text {
+    font-weight: normal;
+    display: none;
+}
+
+.button_1:hover .button-text, .button_2:hover .button-text {
+    display: block;
+}
+
+.button_1:hover .button-text, .button_2:hover .button-text {
+    font-weight: bold;
+    color: black;
+    display: block;
+    font-size: large;
+    text-decoration: underline;
+}
+
+#welcome_text {
+    text-shadow: 2px 2px 5px #675D50;
+}
+
+/* set container to make better layout */
+.home-grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(100px, 1fr));
+    grid-template-rows: repeat(auto-fill, minmax(100px, 1fr));
+    column-gap: 5px;
+    row-gap: 5px;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+}
+  
+@media (max-width: 768px) {
+    .home-grid-container {
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(auto-fill, minmax(100px, 1fr));
+    }
+}
+  
+.home-grid-child {
+    display: grid;
+    grid-template-rows: repeat(auto-fill, minmax(100px, 1fr));
+    column-gap: 2px;
+    row-gap: 2px;
+    padding: 5px;
+    justify-content: center;
+    align-items: center;
+}
+
+.right-bar {
+    border-right: 5px solid white;
+}
+
+.left-bar {
+    border-left: 5px solid white;
+}
+  
+.gray-background {
+    background-color: #333;
+    padding: 2vh 3vh 2vh 2vh;
+    color: white;
+}
+
+.home-grid-child a {
+    text-decoration: none;
+    color: #675D50;
+}
+  
+.home-grid-child a:hover {
+    text-decoration: none;
+    color: #f7c04a;
+}
+
+strong{
+    color:orange;
+}
