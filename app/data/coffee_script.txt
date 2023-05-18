@@ -1,29 +1,29 @@
-Hi|Hi, there|I am (.*), you?::Hi, how are you?;Hi, I am Eliza.
-Tell me about coffee.::Coffee is a popular beverage made from roasted coffee beans. It originated from Ethiopia and has since gained worldwide popularity.
-What are the different types of coffee beans?::There are several types of coffee beans, including Arabica, Robusta, and Liberica. Arabica is the most commonly consumed and known for its delicate flavors.
-How is coffee brewed?::Coffee can be brewed using various methods such as pour-over, French press, espresso, and cold brew. Each method has its unique characteristics and brewing process.
-Can you explain the coffee roasting process?::The coffee roasting process involves heating green coffee beans to transform them into the aromatic and flavorful beans used for brewing. Roasting levels can vary from light to dark, affecting the taste profile.
-What are some popular coffee drink types?::Some popular coffee drink types include cappuccino, espresso, macchiato, latte, pour-over coffee, flat white, mocha, Americano, French press coffee, Chemex coffee, AeroPress coffee, Vietnamese Iced Coffee, cortado, ristretto, Vienna Coffee, Greek Frappé, Red Eye, Ethiopian Coffee Ceremony, and Bulletproof Coffee.
-Can you describe a cappuccino?::A cappuccino is an espresso-based drink made with equal parts espresso, steamed milk, and milk foam. It is often topped with a sprinkling of cocoa or cinnamon.
-Tell me about espresso.::Espresso is a concentrated form of coffee made by forcing pressurized hot water through finely ground coffee beans. It forms the base for many coffee drinks.
-What is a macchiato?::A macchiato is an espresso-based drink with a small amount of steamed milk and a dollop of foam on top. It is often served as a smaller, stronger beverage.
-How is a latte made?::A latte is a coffee drink made with espresso and steamed milk, topped with a layer of milk foam. It is typically served in a larger cup.
-Explain the brewing process of a pour-over coffee.::Pour-over coffee is brewed by pouring hot water over a filter containing coffee grounds. The water gradually drips through, resulting in a clean and nuanced cup of coffee.
-What is a flat white?::A flat white is a coffee drink originating from Australia or New Zealand. It consists of a double shot of espresso combined with velvety textured milk.
-Describe the taste of a mocha.::A mocha is a coffee drink that combines espresso, steamed milk, and chocolate syrup or cocoa powder. It offers a delightful blend of coffee and chocolate flavors.
-What is an Americano?::An Americano is made by diluting a shot of espresso with hot water. It results in a similar strength to regular brewed coffee but with a distinct espresso flavor.
-Tell me about the French press brewing method.::The French press brewing method involves steeping coarsely ground coffee in hot water and then pressing a plunger to separate the brewed coffee from the grounds.
-What is a Chemex coffee?::A Chemex coffee is made using a special hourglass-shaped glass brewer and a thick paper filter. It produces a clean and bright cup of coffee.
-Explain how an AeroPress works.::An AeroPress is a manual coffee brewing device that uses air pressure to extract flavors from coffee grounds. It allows for versatility and experimentation in brewing.
-Can you describe Vietnamese Iced Coffee?::Vietnamese Iced Coffee, also known as Ca Phe Sua Da, is a traditional Vietnamese coffee drink made with strong, dark-roasted coffee and sweetened condensed milk, poured over ice.
-What is a cortado?::A cortado is a coffee drink that consists of equal parts espresso and steamed milk. It is smaller than a latte but still has a smooth and velvety texture.
-How is a ristretto different from an espresso?::A ristretto is a concentrated espresso shot made with the same amount of coffee grounds but extracted with half the amount of water. It produces a stronger and more intense flavor than a regular espresso.
-Tell me about Vienna Coffee.::Vienna Coffee is a classic coffee drink made with two shots of espresso and topped with whipped cream. It is often served with a sprinkle of cocoa on top.
-What is a Greek Frappé?::A Greek Frappé is a frothy and refreshing iced coffee made by mixing instant coffee, sugar, and water, then shaken or blended to create a creamy foam layer on top.
-Explain what a Red Eye is.::A Red Eye is a strong and bold coffee drink made by adding a shot of espresso to a cup of brewed coffee, providing an extra kick of caffeine.
-Tell me about the Ethiopian Coffee Ceremony.::The Ethiopian Coffee Ceremony is a traditional brewing ritual that involves roasting, grinding, and brewing coffee beans. It is a symbol of hospitality and is often accompanied by traditional snacks.
-What is Bulletproof Coffee?::Bulletproof Coffee is a coffee drink made by blending coffee with grass-fed butter and MCT oil. It is claimed to provide sustained energy and mental clarity.
-I need (.*)::Why do you need %1?;Would it really help you to get %1?;Are you sure you need %1?
+Hi.*|Hi, there.*|I am (.*), you\??::Hi, how are you?;Hi, I am Eliza.
+.*Tell me about coffee.*::Coffee is a popular beverage made from roasted coffee beans. It originated from Ethiopia and has since gained worldwide popularity.
+.*What are the different types of coffee beans.*::There are several types of coffee beans, including Arabica, Robusta, and Liberica. Arabica is the most commonly consumed and known for its delicate flavors.
+.*How is coffee brewed.*::Coffee can be brewed using various methods such as pour-over, French press, espresso, and cold brew. Each method has its unique characteristics and brewing process.
+.*Can you explain the coffee roasting process.*::The coffee roasting process involves heating green coffee beans to transform them into the aromatic and flavorful beans used for brewing. Roasting levels can vary from light to dark, affecting the taste profile.
+.*What are some popular coffee drink types.*::Some popular coffee drink types include cappuccino, espresso, macchiato, latte, pour-over coffee, flat white, mocha, Americano, French press coffee, Chemex coffee, AeroPress coffee, Vietnamese Iced Coffee, cortado, ristretto, Vienna Coffee, Greek Frappé, Red Eye, Ethiopian Coffee Ceremony, and Bulletproof Coffee.
+.*Can you describe a cappuccino.*::A cappuccino is an espresso-based drink made with equal parts espresso, steamed milk, and milk foam. It is often topped with a sprinkling of cocoa or cinnamon.
+.*Tell me about espresso.*::Espresso is a concentrated form of coffee made by forcing pressurized hot water through finely ground coffee beans. It forms the base for many coffee drinks.
+.*What is a macchiato.*::A macchiato is an espresso-based drink with a small amount of steamed milk and a dollop of foam on top. It is often served as a smaller, stronger beverage.
+.*How is a latte made.*::A latte is a coffee drink made with espresso and steamed milk, topped with a layer of milk foam. It is typically served in a larger cup.
+.*Explain the brewing process of a pour-over coffee.*::Pour-over coffee is brewed by pouring hot water over a filter containing coffee grounds. The water gradually drips through, resulting in a clean and nuanced cup of coffee.
+.*What is a flat white.*::A flat white is a coffee drink originating from Australia or New Zealand. It consists of a double shot of espresso combined with velvety textured milk.
+.*Describe the taste of a mocha.*::A mocha is a coffee drink that combines espresso, steamed milk, and chocolate syrup or cocoa powder. It offers a delightful blend of coffee and chocolate flavors.
+.*What is an Americano.*::An Americano is made by diluting a shot of espresso with hot water. It results in a similar strength to regular brewed coffee but with a distinct espresso flavor.
+.*Tell me about the French press brewing method.*::The French press brewing method involves steeping coarsely ground coffee in hot water and then pressing a plunger to separate the brewed coffee from the grounds.
+.*What is a Chemex coffee.*::A Chemex coffee is made using a special hourglass-shaped glass brewer and a thick paper filter. It produces a clean and bright cup of coffee.
+.*Explain how an AeroPress works.*::An AeroPress is a manual coffee brewing device that uses air pressure to extract flavors from coffee grounds. It allows for versatility and experimentation in brewing.
+.*Can you describe Vietnamese Iced Coffee.*::Vietnamese Iced Coffee, also known as Ca Phe Sua Da, is a traditional Vietnamese coffee drink made with strong, dark-roasted coffee and sweetened condensed milk, poured over ice.
+.*What is a cortado.*::A cortado is a coffee drink that consists of equal parts espresso and steamed milk. It is smaller than a latte but still has a smooth and velvety texture.
+.*How is a ristretto different from an espresso.*::A ristretto is a concentrated espresso shot made with the same amount of coffee grounds but extracted with half the amount of water. It produces a stronger and more intense flavor than a regular espresso.
+.*Tell me about Vienna Coffee.*::Vienna Coffee is a classic coffee drink made with two shots of espresso and topped with whipped cream. It is often served with a sprinkle of cocoa on top.
+.*What is a Greek Frappé.*::A Greek Frappé is a frothy and refreshing iced coffee made by mixing instant coffee, sugar, and water, then shaken or blended to create a creamy foam layer on top.
+.*Explain what a Red Eye is.*::A Red Eye is a strong and bold coffee drink made by adding a shot of espresso to a cup of brewed coffee, providing an extra kick of caffeine.
+.*Tell me about the Ethiopian Coffee Ceremony.*::The Ethiopian Coffee Ceremony is a traditional brewing ritual that involves roasting, grinding, and brewing coffee beans. It is a symbol of hospitality and is often accompanied by traditional snacks.
+.*What is Bulletproof Coffee.*::Bulletproof Coffee is a coffee drink made by blending coffee with grass-fed butter and MCT oil. It is claimed to provide sustained energy and mental clarity.
+.*I need (.*).*::Why do you need %1\??;Would it really help you to get %1?;Are you sure you need %1?
 Why don\'t you (.*)::Do you really think I don't %1?;Perhaps eventually I will %1.;Do you really want me to %1?
 Why can\'t I (.*)::Do you think you should be able to %1?;If you could %1, what would you do?;I don't know -- why can't you %1?;Have you really tried?
 I can\'t (.*)::How do you know you can't %1?;Perhaps you could %1 if you tried.;What would it take for you to %1?

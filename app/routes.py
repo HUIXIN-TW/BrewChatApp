@@ -13,6 +13,13 @@ from .handleStranger import generate_chat_pairs, get_today_chat_pair
 @app.route('/index', methods=['GET', 'POST'])
 @login_required
 def index():
+    return render_template('index.html')
+
+
+@app.route('/eliza/', methods=['GET', 'POST'])
+@login_required
+def eliza():
+    current_datetime = datetime.now().date()
     if request.method == 'POST':
         message = request.form['message'].lower()
         response = chatbot.get_response(message)
@@ -21,7 +28,7 @@ def index():
         db.session.add(chat)
         db.session.commit()
         return jsonify({'response': response})
-    return render_template('index.html')
+    return render_template('eliza.html', current_datetime = current_datetime)
 
 
 @app.route('/login/', methods=['GET', 'POST'])

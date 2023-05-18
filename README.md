@@ -1,4 +1,4 @@
-# CITS5505-JustChat-Instruction
+# CITS5505-BrewChat-Instruction
 
 _UWA CITS5505 Project2 (22922504, 22926143) contributing equally_
 
@@ -103,7 +103,7 @@ Next steps:
 
 Discussion when the project complete 75% or a week before the presentation
 
-# CITS5505-JustChat-Project-README
+# CITS5505-BrewChat-Project-README
 
 ## Create an environment
 
@@ -144,9 +144,9 @@ def hello_world():
 ```
 
 ```bash
-flask --app justchat.py --debug run
+flask --app brewchat.py --debug run
 ```
-if not work, try `export FLASK_APP=justchat.py`
+if not work, try `export FLASK_APP=brewchat.py`
 
 ## Others
 
@@ -186,15 +186,15 @@ Type `python` in Terminal to get into python playground
 Activate shell
 
 ```
-(venv) huixinyang@Damons-MacBook-Air CITS5505-JustChat % flask shell
+(venv) huixinyang@Damons-MacBook-Air CITS5505-BrewChat % flask shell
 Python 3.9.6 (default, Oct 18 2022, 12:41:40) 
 [Clang 14.0.0 (clang-1400.0.29.202)] on darwin
 App: app
-Instance: /Users/huixinyang/Library/Mobile Documents/iCloud~md~obsidian/Documents/ObsidianSync/000 UWA/UWA Materials/2023s1/CITS5505/CITS5505-JustChat/instance
+Instance: /Users/huixinyang/Library/Mobile Documents/iCloud~md~obsidian/Documents/ObsidianSync/000 UWA/UWA Materials/2023s1/CITS5505/CITS5505-BrewChat/instance
 >>> app
 <Flask 'app'>
 >>> db
-<SQLAlchemy sqlite:////Users/huixinyang/Library/Mobile Documents/iCloud~md~obsidian/Documents/ObsidianSync/000 UWA/UWA Materials/2023s1/CITS5505/CITS5505-JustChat/app.db>
+<SQLAlchemy sqlite:////Users/huixinyang/Library/Mobile Documents/iCloud~md~obsidian/Documents/ObsidianSync/000 UWA/UWA Materials/2023s1/CITS5505/CITS5505-BrewChat/app.db>
 >>> User
 <class 'app.models.User'>
 >>> Chat
