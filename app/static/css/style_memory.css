@@ -1,14 +1,11 @@
-.chat-header {
+.chat-header-container{
     width: 800px;
     height: 80px;
-    border-radius: 12px 12px 0px 0px;
+    border-radius:12px 12px 0px 0px;
     margin: auto;
     background-color: grey;
     text-align: center;
     font-size: 20px;
-    display: flex; 
-    justify-content: center;
-    align-items: center;
 }
 
 .chat-window {
@@ -86,7 +83,7 @@
 }
 
 @media screen and (max-width: 414px) {
-    .chat-header {
+    .chat-header-container {
         width: 250px;
         height: 30px;
         border-radius: 12px 12px 0px 0px;
@@ -112,7 +109,7 @@
 }
 
 @media screen and (max-width: 391px) {
-    .chat-header {
+    .chat-header-container {
         width: 200px;
         height: 30px;
         border-radius: 12px 12px 0px 0px;
@@ -147,7 +144,7 @@
     color: black;
     font-style: italic;
     font-weight: bold;
-  }
+}
 
 .show-button {
     background-color: #675D50;

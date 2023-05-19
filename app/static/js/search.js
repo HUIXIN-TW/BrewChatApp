@@ -13,16 +13,16 @@ $('#search-form').submit(function(event) {
           var results = response.results;
           var html = '';
           if (results.length > 0) {
-            html += '<ul>';
+            html += '<p>';
             for (var i = 0; i < results.length; i++) {
               //Original code, keep temporary, need to delete after finalisation
               //html += '<li><strong>Result:</strong> ' + JSON.stringify(results[i]) + '</li>';
               //html += '<li><strong>Body:</strong>' + results[i].body + " " + results[i].timestamp +'</li>';
               //html += '<li><strong>Response:</strong>' + results[i].response + " " + results[i].timestamp + '</li>';
-              html += '<li><div class="message right">' + results[i].body + '</li>';
-              html += '<li><div class="message left"> ' + results[i].response + '</li>';
+              html += '<div class="message right">' + results[i].body +'</div>';
+              html += '<div class="message left"> ' + results[i].response + '</div>';
               }
-            html += '</ul>';
+            html += '</p>';
             $('#search-results').html(html);
           }
         }
@@ -58,8 +58,8 @@ function clearMark() {
     highlights[0].outerHTML = highlights[0].innerHTML;
   }
 
-    // Clear the input message
-    document.getElementById("keyword").value = "";
+  // Clear the input message
+  document.getElementById("keyword").value = "";
     
   // Toggle button text and click event
   let button = document.getElementById("mark-button");
