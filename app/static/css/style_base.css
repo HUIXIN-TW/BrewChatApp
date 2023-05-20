@@ -10,9 +10,7 @@ html, body {
 }
 
 main{
-    /* Scroll horizontally as needed */
     overflow-x: auto;
-    /* Center contents */
     text-align: center;
     height: 100%;
 }
@@ -67,8 +65,14 @@ nav div p {
     padding: 5vh 3vh 0vh 3vh;
   }
 }
+
+/*Login and register text style*/
+.log-reg-style{
+  color:#4B371C;
+}
   
 /* pic */
+/*image reference: Source:unplash.com*/
 .welcome-pic {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), #333),
     url("https://images.unsplash.com/photo-1587080413959-06b859fb107d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8Y29mZmVlJTIwY3VwfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=900&q=60");
@@ -88,6 +92,12 @@ nav div p {
   font-family: monospace;
   margin-top: 15px;
   border-radius: 5px;
+}
+
+/*password rule style*/
+.rule-for-user{
+  font-size: 10px; 
+  color: #888;
 }
 
 @media screen and (max-width: 768px) {
@@ -119,6 +129,7 @@ nav div p {
   text-decoration: underline;
 }
 
+/*alert message style*/
 .alert {
   padding: 15px;
   border: 1px solid transparent;
@@ -148,7 +159,7 @@ nav div p {
   float: left;
 }
 
-.mode-btn p {
+.mode-btn span {
   font-size: 50px;
   background-color: transparent;
 }
@@ -166,4 +177,12 @@ nav div p {
 
 .dark-mode a {
   color: #4caf50;
+}
+
+/*icon Source: icons8.com, https://icons8.com/icon/uRd7woTrOOrr/coffee"*/
+.icon, .icon:hover {
+  width: 16px;
+  height: 16px;
+  background-image: url("https://img.icons8.com/external-justicon-lineal-color-justicon/64/external-coffee-coffee-shop-justicon-lineal-color-justicon-2.png");
+  background-size: cover;
 }

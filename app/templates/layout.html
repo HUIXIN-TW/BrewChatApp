@@ -1,54 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="initial-scale=1, width=device-width">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
     <title>BrewChat</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_base.css') }}">
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style_base.css') }}"
+    />
     <!-- ICON Package -->
-     <link
+    <link
       rel="stylesheet"
       href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"
-     >
+    />
+    <!--favicon reference. Source: icons8.com, https://icons8.com/icon/uRd7woTrOOrr/coffee"-->
+    <link rel="icon" href="https://img.icons8.com/external-justicon-lineal-color-justicon/64/external-coffee-coffee-shop-justicon-lineal-color-justicon-2.png" 
+    type="image/png"/>
     {% block styling %} {% endblock %}
   </head>
   <body onload="type_effect_setting()" id="body" class="light-mode">
-      <!-- header section: nav bar and welocme pic -->
-      <header>
-        <nav>
+    <!-- header section: nav bar and welocme pic -->
+    <header>
+      <nav>
         {% if current_user.username %}
-          <ul>
-            <li><a href="/index">About BrewChat</a></li>
-            <li><a href="/chat">Chat</a></li>
-            <li><a href="/eliza">Eliza</a></li>
-            <li><a href="/memory">Memory</a></li>
-            <li><a href="/account">{{ current_user.username|upper }}</a></li>
-            <li class="nav_left"><a href="/logout">Log out</a></li>
-          </ul>
-          <button class="mode-btn" onclick="toggleMode()">
-            <p id="mode-icon" class="ion-ios-sunny-outline"></p>
-          </button>
+        <ul>
+          <li><a href="/index">About BrewChat</a></li>
+          <li><a href="/chat">Chat</a></li>
+          <li><a href="/eliza">Eliza</a></li>
+          <li>
+            <a href="/account" style="color: orange"
+              >{{ current_user.username|upper }}</a
+            >
+          </li>
+          <li class="nav_left"><a href="/logout">Log out</a></li>
+          <li class="nav_left"><a href="/memory">Memory</a></li>
+        </ul>
+        <button class="mode-btn" onclick="toggleMode()">
+          <span id="mode-icon" class="ion-ios-sunny-outline"></span>
+        </button>
         {% else %}
-          <ul>
-            <li><a href="/register">Register</a></li>
-            <li><a href="/login">Log In</a></li>
-          </ul>
+        <ul>
+          <li><a href="/register">Register</a></li>
+          <li><a href="/login">Log In</a></li>
+          <li class="nav_left"><a href="/index" class="icon"></a></li>
+          <li class="nav_left"><a href="/index">BrewChat</a></li>
+        </ul>
         {% endif %}
-          <div class="welcome-pic">
-            <p># HaveFun</p>
-            <p># WonderfulMemory</p>
-          </div>
-        </nav>
-      </header>
-      <main>
-        {% include 'flash_messages.html' %}
-        {% block main %}{% endblock %}
-        <script src="{{ url_for('static', filename='js/script.js')}}"></script>
-        {% block script %}{% endblock %}
-      </main>
-      <!-- footer -->
-      <footer>
-        <p>Copyright &copy; 2023 Huixin Yang & YunChuan Kung</p>
-      </footer>
+        <div class="welcome-pic">
+          <p># HaveFun</p>
+          <p># WonderfulMemory</p>
+        </div>
+      </nav>
+    </header>
+    <main>
+      {% include 'flash_messages.html' %} {% block main %}{% endblock %}
+      <script src="{{ url_for('static', filename='js/script.js')}}"></script>
+      {% block script %}{% endblock %}
+    </main>
+
+    <footer>
+      <p>Copyright &copy;2023 HuiXinYang and YunChuanKung</p>
+    </footer>
   </body>
 </html>

@@ -1,3 +1,10 @@
+/**
+ * Description: JavaScript code for 
+ * 1. Handle Eliza chatbot input and return response
+ * 2. Display the message on the chat window
+ * Author: HuiXin Yang
+ */
+
 // get user input and return chatbot response
 const chatLog = document.getElementById('chat-log');
 const messageInput = document.getElementById('message');
@@ -32,6 +39,7 @@ chatForm.addEventListener('submit', (event) => {
     messageInput.value = '';
 });
 
+// Display message on the chat window
 function addMessageToLog(sender, message) {
     const messageElement = document.createElement('div');
     messageElement.className = 'message ' + (sender === 'Chatbot' ? 'left' : 'right');

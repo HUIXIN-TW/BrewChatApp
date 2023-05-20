@@ -1,27 +1,58 @@
-{% extends "layout.html" %}
+{% extends "layout.html" %} {% block main %}
+<form action="/register" method="post">
+  <h2 id="type-effect" class="log-reg-style">Join BrewChat Today! &#127881;</h2>
+  <h1 class="log-reg-style">REGISTER</h1>
 
-{% block main %}
-    <form action="/register" method="post">
-        <h1>REGISTER</h1>
-        
-        <div>
-            {% if session['tmpName'] %}
-            <input autocomplete="off" autofocus class="input-group" name="username" placeholder="Username" type="text" value="{{ session['tmpName'] }}" required>
-            {% else %}
-            <input autocomplete="off" autofocus class="input-group" name="username" placeholder="Username" type="text" required>
-            {% endif %}    
-        </div>
+  <div>
+    {% if session['tmpName'] %}
+    <input
+      autocomplete="off"
+      autofocus
+      class="input-group"
+      name="username"
+      placeholder="Username"
+      type="text"
+      value="{{ session['tmpName'] }}"
+      required
+    />
+    {% else %}
+    <input
+      autocomplete="off"
+      autofocus
+      class="input-group"
+      name="username"
+      placeholder="Username"
+      type="text"
+      required
+    />
+    {% endif %}
+  </div>
 
-        <div>
-            <input class="input-group" name="password" placeholder="Password" type="password" required>
-        </div>
-        
-        <div>
-            <input class="input-group" name="confirm_password" placeholder="Password Again" type="password" required>
-        </div>
-        <div>
-            <a href="/login" class="underline-link">Already Have Account?</a>
-        </div>
-        <button class="btn" type="submit">Register</button>
-    </form>
+  <div>
+    <input
+      class="input-group"
+      name="password"
+      placeholder="Password"
+      type="password"
+      required
+    />
+  </div>
+  <p class="rule-for-user">Password must contain both letters and digits.</p>
+  <p class="rule-for-user">Password must be at least 6 characters long.</p>
+  <div>
+    <input
+      class="input-group"
+      name="confirm_password"
+      placeholder="Password Again"
+      type="password"
+      required
+    />
+  </div>
+  <br />
+  <div>
+    <a href="/login" class="underline-link">Already Have Account?</a>
+  </div>
+  <br />
+  <button class="btn" type="submit">Register</button>
+</form>
 {% endblock %}

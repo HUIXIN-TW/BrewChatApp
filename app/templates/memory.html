@@ -1,27 +1,36 @@
-{% extends "layout.html" %}
-
-{% block styling %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style_memory.css') }}">
-{% endblock %}
-
-{% block main %}
-<h1 id="type-effect">Message History</h1>
-  <div class ="chat-header-container">
+{% extends "layout.html" %} {% block styling %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/style_chat_base.css') }}"
+/>
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/style_memory.css') }}"
+/>
+{% endblock %} {% block main %}
+<h1 id="type-effect">Message history</h1>
+<div class="chat-header-container">
   <form id="search-form">
-    <input  class="chat-box" type="text" name="query" placeholder="Search...">
-    <button type="submit" class="show-button" >Show memory</button>
+    <input class="chat-box" type="text" name="query" placeholder="Search..." />
+    <button type="submit" class="show-button">Show memory</button>
   </form>
 </div>
 <div class="chat-window" id="chat-window">
-    <div id="search-results"></div>
+  <div id="search-results"></div>
 </div>
 <div class="chat-button-container">
-  <input id="keyword" class="chat-box" type="text" name="message" placeholder="Mark your message...">
-  <button id="mark-button" onclick="mark()" class="chat-button" type="submit">Mark</button>
+  <input
+    id="keyword"
+    class="chat-box"
+    type="text"
+    name="message"
+    placeholder="Mark your message..."
+  />
+  <button id="mark-button" onclick="mark()" class="chat-button" type="submit">
+    Mark
+  </button>
 </div>
-{% endblock %}
-
-{% block script %}
+{% endblock %} {% block script %}
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="{{ url_for('static', filename='js/search.js') }}"></script>
 {% endblock %}
