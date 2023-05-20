@@ -28,7 +28,11 @@ def eliza():
         db.session.add(chat)
         db.session.commit()
         return jsonify({'response': response})
-    return render_template('eliza.html', current_datetime = current_datetime)
+    # Get the current user's date of birth
+    birthdayMonth = 0
+    if current_user.is_authenticated:
+        birthdayMonth = current_user.date_of_birth.month
+    return render_template('eliza.html', current_datetime=current_datetime, birthdayMonth=birthdayMonth)
 
 
 @app.route('/login/', methods=['GET', 'POST'])
@@ -117,6 +121,13 @@ def register():
 @app.route("/account/", methods=['GET', 'POST'])
 @login_required
 def account():
+    quote = None
+    birthdayMonth = None
+    current_datetime = datetime.now().date()
+    # Get the current values from the database
+    if current_user.is_authenticated:
+        birthdayMonth = current_user.date_of_birth.month
+        quote = current_user.quote
     if request.method == 'POST':
         try:
         # Get the updated values from the form
@@ -136,14 +147,7 @@ def account():
             db.session.rollback()
             flash('Failed to update account details.', 'error')
         return redirect(url_for('account'))
-    
-    # Get the current date
-    current_datetime = datetime.now().date()
-    
-    # Get the current values from the database
-    dob = current_user.date_of_birth
-    quote = current_user.quote
-    return render_template('account.html', dob=dob, quote=quote, current_datetime=current_datetime)
+    return render_template('account.html', birthdayMonth=birthdayMonth, quote=quote, current_datetime=current_datetime)
 
 
 @app.route('/like_quote', methods=['POST'])
@@ -192,19 +196,19 @@ def search():
 @app.route('/chat/')
 @login_required
 def chat():
+    # Check if the random user name already exists
     if session.get('random_user_name') is None:
         get_random_user()
-
-    username = current_user.username
     # Check if the chat pair already exists for today
     if session.get('chat_pair_id') is None:
-        session['chat_pair_id'] = get_today_chat_pair().id
-    print(f'==== chat_pair_session: {session.get("chat_pair_id")} ====')
-
+        try:
+            session['chat_pair_id'] = get_today_chat_pair().id
+        except:
+            current_datetime = datetime.now().date()
+            flash('No one in Cafe Shop now. Please Chat with Eliza or Come Back later.', category='danger')
+            return render_template('eliza.html', current_datetime = current_datetime)
     room = session.get("chat_pair_id")
-    print(f'==== room: {room} ====')
-
-    return render_template('chat.html', username=username, room=room)
+    return render_template('chat.html', username=current_user.username, room=room)
 
 
 @app.route('/get_random_user')

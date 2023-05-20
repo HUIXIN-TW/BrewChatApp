@@ -16,9 +16,9 @@ class User(UserMixin, db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), index=True, unique=True)
+    password_hash = db.Column(db.String(128))
     date_of_birth = db.Column(db.Date)
     quote = db.Column(db.String(250))
-    password_hash = db.Column(db.String(128))
     chats = db.relationship('Chat', backref='speaker', lazy='dynamic')
 
     # The __repr__ method tells Python how to print objects of this class, which is going to be useful for debugging.

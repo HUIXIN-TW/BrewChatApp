@@ -2,6 +2,7 @@ import nltk
 import json
 from nltk.chat import eliza
 from nltk.sentiment import SentimentIntensityAnalyzer
+import os
 
 class ElizaChatbot:
     def __init__(self):
@@ -12,7 +13,8 @@ class ElizaChatbot:
         nltk.download('words')
         nltk.download('stopwords')
         nltk.download('vader_lexicon')
-        self.pairs = self.load_pairs("app/data/coffee_script.txt") 
+        coffee_file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "app/data/coffee_script.txt")
+        self.pairs = self.load_pairs(coffee_file_path)
         self.suggestions = self.load_suggestions()
         self.chatbot = eliza.Chat(self.pairs, eliza.reflections)
         self.sentiment_analyzer = SentimentIntensityAnalyzer()
@@ -49,7 +51,8 @@ class ElizaChatbot:
 
 
     def load_suggestions(self):
-        with open("app/data/suggestions.json", "r") as file:
+        suggestion_file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "app/data/suggestions.json")
+        with open(suggestion_file_path, "r") as file:
             suggestions_data = json.load(file)
 
         my_suggestions = {
