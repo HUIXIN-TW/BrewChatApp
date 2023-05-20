@@ -3,11 +3,12 @@
 _UWA CITS5505 Project2 (22922504, 22926143) contributing equally_
 
 ## Table of contents
-* [Purpose of the Web Application](#general-info)
-* [Architecture of the web application](#architecture)
+* [Purpose](#general-info)
+* [Architecture](#architecture)
 * [Technologies](#technologies)
 * [Launch](#launch)
 * [Test](#test)
+* [Commit Log](#commit)
 * [Source](#source)
 
 
@@ -25,7 +26,7 @@ BrewChat is built using HTML, CSS, Flask, AJAX, jQuery, and the SQLAlchemy datab
 
 - Chatbot (Backend): BrewChat incorporates the Eliza Chatbot as part of the backend functionality. The Eliza Chatbot, implemented using the Natural Language Toolkit (NLTK), enables chat-based conversations with users. It processes user input, performs natural language processing, generates appropriate responses, and communicates with the client-side interface.
 
-- Database: BrewChat utilizes the SQLAlchemy database framework to interact with the SQLite database. The SQLite database stores user information, conversation pairings, and relevant chat logs. SQLAlchemy provides an Object-Relational Mapping (ORM) tool, simplifying database operations within the application
+- Database: BrewChat utilizes the SQLAlchemy database framework to interact with the SQLite database. The SQLite database stores user information, conversation pairings, and relevant chat logs. SQLAlchemy provides an Object-Relational Mapping (ORM) tool, simplifying database operations within the application.
 
 The BrewChat web application combines Flask, SocketIO, and SQLAlchemy for smooth real-time communication in the chat feature. Additionally, the integration of the Eliza chatbot enhances user engagement, replicating the serendipity of coffee shop encounters.
 
@@ -49,13 +50,13 @@ python3 -m venv venv
 
 Before you work on your project, activate the corresponding environment:
 
-macOS User:
+- macOS user:
 
 ```bash
 . venv/bin/activate
 ```
 
-Microsoft Windows user:
+- Microsoft Windows user:
 
 ```bash
 . venv\Scripts\activate
@@ -83,28 +84,22 @@ flask shell
 ```bash
 flask --app brewchat.py --debug run
 ```
-if not work, try `export FLASK_APP=brewchat.py`
+If not work, try `export FLASK_APP=brewchat.py`
 
-### Others
+## Test <a name = "test"></a>
+### Unit tests
+- Input validation
+### Selenium Tests
+- Verify Successful User Registration
 
-Get you all requirements (every time when you install new module)
+### How to run
 
-```bash
-python3 -m pip freeze > requirements.txt
-```
-
-Check file tree for a Flask project with a basic structure:
-
-```bash
-tree -I 'venv|__pycache__|pytest_cache' > tree.txt
-```
-
-## Unit test <a name = "test"></a>
-
-## Commit log
+## Commit log <a name = "commit"></a>
 
 ## Source <a name = "source"></a>
 This app is inspired by the Flask Mega-Tutorial  by [@Miguel Grinberg](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world)
+
+
 
 
 ## Introduction
