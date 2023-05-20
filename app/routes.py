@@ -5,7 +5,7 @@ from flask import (Flask, redirect, render_template, request, session,
                    url_for, flash, jsonify)
 from flask_login import current_user, login_user, logout_user, login_required
 from flask_socketio import SocketIO, join_room, leave_room, send, emit
-from app.models import User, Chat, ChatPair, UserChat
+from app.models import User, Chat, ChatPair
 from .handleStranger import generate_chat_pairs, get_today_chat_pair
 
 
@@ -28,11 +28,7 @@ def eliza():
         db.session.add(chat)
         db.session.commit()
         return jsonify({'response': response})
-    # Get the current user's date of birth
-    birthdayMonth = 0
-    if current_user.is_authenticated:
-        birthdayMonth = current_user.date_of_birth.month
-    return render_template('eliza.html', current_datetime=current_datetime, birthdayMonth=birthdayMonth)
+    return render_template('eliza.html', current_datetime = current_datetime)
 
 
 @app.route('/login/', methods=['GET', 'POST'])
@@ -121,13 +117,6 @@ def register():
 @app.route("/account/", methods=['GET', 'POST'])
 @login_required
 def account():
-    quote = None
-    birthdayMonth = None
-    current_datetime = datetime.now().date()
-    # Get the current values from the database
-    if current_user.is_authenticated:
-        birthdayMonth = current_user.date_of_birth.month
-        quote = current_user.quote
     if request.method == 'POST':
         try:
         # Get the updated values from the form
@@ -147,7 +136,14 @@ def account():
             db.session.rollback()
             flash('Failed to update account details.', 'error')
         return redirect(url_for('account'))
-    return render_template('account.html', birthdayMonth=birthdayMonth, quote=quote, current_datetime=current_datetime)
+    # Get the current date
+    current_datetime = datetime.now().date()
+
+    # Get the current values from the database
+    dob = current_user.date_of_birth
+    quote = current_user.quote
+    return render_template('account.html', dob=dob, quote=quote, current_datetime=current_datetime)
+
 
 
 @app.route('/like_quote', methods=['POST'])
@@ -198,6 +194,7 @@ def search():
 def chat():
     # Check if the random user name already exists
     if session.get('random_user_name') is None:
+        print(session['random_user_name'])
         get_random_user()
     # Check if the chat pair already exists for today
     if session.get('chat_pair_id') is None:

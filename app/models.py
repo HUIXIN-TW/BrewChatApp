@@ -57,17 +57,3 @@ class ChatPair(db.Model):
 
     def __repr__(self):
         return '<ChatPair {}>'.format(self.id)
-
-class UserChat(db.Model):
-    __tablename__ = 'user_chats'
-
-    id = db.Column(db.Integer, primary_key=True)
-    body = db.Column(db.String(140))
-    timestamp = db.Column(db.DateTime(timezone=True), index=True, default=datetime.now(pytz.timezone('Australia/Perth')))
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    pair_id = db.Column(db.Integer, db.ForeignKey('chat_pairs.id'))
-    pair = db.relationship('ChatPair', backref='conversations')
-
-
-    def __repr__(self):
-        return '<UserChat {}>'.format(self.body)
