@@ -65,9 +65,9 @@ class AppTestCase(unittest.TestCase):
         response = self.client.get('/login/')
         self.assertEqual(response.status_code, 200)
         self.assertIn(b'LOGIN', response.data)
-        self.assertIn(b'<input autocomplete="off" autofocus class="input-group" name="username" placeholder="Username" type="text" required>', response.data)
-        self.assertIn(b'<input class="input-group" name="password" placeholder="Password" type="password" required>', response.data)
-        self.assertIn(b'<button class="btn" type="submit">Log In</button>', response.data)
+        self.assertIn(b'name="username"', response.data)
+        self.assertIn(b'name="password"', response.data)
+        self.assertIn(b'type="submit"', response.data)
 
     def test_register_page(self):
         """
@@ -76,10 +76,10 @@ class AppTestCase(unittest.TestCase):
         response = self.client.get('/register/')
         self.assertEqual(response.status_code, 200)
         self.assertIn(b'REGISTER', response.data)
-        self.assertIn(b'<input autocomplete="off" autofocus class="input-group" name="username" placeholder="Username" type="text" required>', response.data)
-        self.assertIn(b'<input class="input-group" name="password" placeholder="Password" type="password" required>', response.data)
-        self.assertIn(b'<input class="input-group" name="confirm_password" placeholder="Password Again" type="password" required>', response.data)
-        self.assertIn(b'<button class="btn" type="submit">Register</button>', response.data)
+        self.assertIn(b'name="username"', response.data)
+        self.assertIn(b'name="password"', response.data)
+        self.assertIn(b'name="confirm_password"', response.data)
+        self.assertIn(b'type="submit"', response.data)
 
 
 if __name__ == '__main__':

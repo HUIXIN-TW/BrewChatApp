@@ -11,7 +11,7 @@ from .handleStranger import generate_chat_pairs, get_today_chat_pair
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
-##@login_required
+@login_required
 def index():
     return render_template('index.html')
 
@@ -194,7 +194,6 @@ def search():
 def chat():
     # Check if the random user name already exists
     if session.get('random_user_name') is None:
-        print(session['random_user_name'])
         get_random_user()
     # Check if the chat pair already exists for today
     if session.get('chat_pair_id') is None:
