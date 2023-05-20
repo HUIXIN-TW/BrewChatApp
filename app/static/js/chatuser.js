@@ -1,3 +1,19 @@
+// Reference
+// JavaScript library: jQuery
+// Version: 3.6.0
+// Source: https://code.jquery.com/jquery-3.6.0.min.js
+
+// Reference
+// JavaScript library: Socket.IO
+// Version: 4.4.1
+// Source: https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.1/socket.io.js
+
+/**
+ * Description: JavaScript code for chat room functionality using Socket.IO.
+ * Dependencies: Socket.IO (4.4.1), jQuery (3.6.0)
+ * Author: HuiXin Yang
+*/
+
 $(document).ready(function(){
   // Connect to the server using Socket.IO
   const socket = io.connect(window.location.origin + '/chat/');
@@ -35,14 +51,29 @@ $(document).ready(function(){
   $('#leaveRoomButton').on('click', leaveRoom);
 
 
-  // Function to leave the chat room
-  function leaveRoom() {
+  // // Function to leave the chat room
+  // function leaveRoom() {
+  //   // Send a 'left' event to the server and disconnect
+  //   socket.emit('left', () => {
+  //     socket.disconnect();
+  //     window.location.href = '/';
+  //   });
+  // }
+
+// Function to leave the chat room
+function leaveRoom() {
+  // Show a confirmation dialog
+  const confirmation = confirm("Are you ready to take a break from the BrewChat café? If you leave, you might miss out on your favorite blend of conversations. Are you sure you want to exit?");
+
+  if (confirmation) {
     // Send a 'left' event to the server and disconnect
     socket.emit('left', () => {
       socket.disconnect();
       window.location.href = '/';
     });
   }
+}
+
 
   // Function to get a random user
   function getRandomUser() {

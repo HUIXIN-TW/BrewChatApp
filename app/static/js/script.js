@@ -1,3 +1,12 @@
+/**
+ * Description: JavaScript code for 
+ * 1. Flash Message Handling
+ * 2. Typing Effect
+ * 3. Dark Mode Toggle
+ * Author: HuiXin Yang & YunChuan Kung
+ */
+
+// Flash Message Handling
 // get all close buttons under flash messages
 var closeButtons = document.querySelectorAll(".flash-message .close");
 
@@ -9,6 +18,8 @@ closeButtons.forEach(function (button) {
     parent.parentNode.removeChild(parent);
   });
 });
+
+// Typing Effect
 
 function type_effect_setting() {
   // create a typing effect
@@ -35,6 +46,8 @@ function typingEffect(word, idName, count, speed) {
     }, speed);
   }
 }
+
+// Dark Mode Toggle
 
 // using js and DOM to change the appearance of page
 function toggleMode() {

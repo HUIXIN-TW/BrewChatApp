@@ -1,22 +1,31 @@
+/*Style for about BrewChat page*/
+
+/*Container for eliza and caht bottons*/
 .button-container {
     display: flex;
     justify-content: center;
     margin-top: 50px;
 }
 
-.button_1 {
+/*image reference
+Source: Freepik.com
+*/
+.button_eliza {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 200px;
     height: 200px;
     background: url('https://img.freepik.com/free-vector/hand-holding-phone-with-conversation-girl-chat-bot-mobile-app-talking-robot-online-flat-vector-illustration-technology-assistance-concept-banner-website-design-landing-page_74855-24649.jpg?size=626&ext=jpg&ga=GA1.1.319712729.1684336727&semt=sph') center/cover;
-    margin-right: 20px;
+    margin-left: 20px;
     cursor: pointer;
     transition: transform 0.3s ease;  
 }
 
-.button_2 {
+/*image reference
+Source: Freepik.com
+*/
+.button_chat {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -29,7 +38,8 @@
     margin-left: 50px;
 }
 
-.button_1:hover, .button_2:hover  {
+/*button style and effect*/
+.button_eliza:hover, .button_chat:hover  {
     transform: scale(1.01);
     opacity: 0.5;
 }
@@ -39,11 +49,11 @@
     display: none;
 }
 
-.button_1:hover .button-text, .button_2:hover .button-text {
+.button_eliza:hover .button-text, .button_chat:hover .button-text {
     display: block;
 }
 
-.button_1:hover .button-text, .button_2:hover .button-text {
+.button_eliza:hover .button-text, .button_chat:hover .button-text {
     font-weight: bold;
     color: black;
     display: block;
@@ -51,7 +61,8 @@
     text-decoration: underline;
 }
 
-#welcome_text {
+/*Style welcome text*/
+.welcome_text {
     text-shadow: 2px 2px 5px whitesmoke;
 }
 
@@ -72,6 +83,20 @@
       grid-template-columns: 1fr;
       grid-template-rows: repeat(auto-fill, minmax(100px, 1fr));
     }
+
+    .button_eliza, .button_chat  {
+        transform: scale(1.01);
+        opacity: 0.5;
+    }
+
+    .button_eliza .button-text, .button_chat .button-text {
+        font-weight: bold;
+        color: black;
+        display: block;
+        font-size: large;
+        text-decoration: underline;
+    }
+
 }
   
 .home-grid-child {
@@ -84,6 +109,7 @@
     align-items: center;
 }
 
+/*Style the about BrewChat paragraph section*/
 .right-bar {
     border-right: 5px solid white;
 }
@@ -113,6 +139,7 @@
     text-align: left;
 }
 
+/*style to mark the special functionality*/
 strong{
     color:orange;
 }

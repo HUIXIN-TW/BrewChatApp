@@ -1,3 +1,17 @@
+// Reference
+// JavaScript library: jQuery
+// Version: 3.6.0
+// Source: https://code.jquery.com/jquery-3.6.0.min.js
+
+/**
+ * Description: JavaScript code for 
+ * 1. load a random quote from an API
+ * 2. Edit and save function
+ * 3. Handle validation user input of day of birth
+ * Author: HuiXin Yang & YunChuan Kung
+ */
+
+// window call loadRandomQuote function
 window.addEventListener('DOMContentLoaded', function() {
     loadRandomQuote();
   });
@@ -81,5 +95,41 @@ saveBtn.addEventListener("click", function() {
   });
   textElems.forEach(function(elem) {
     elem.setAttribute("readonly", "");
+  });
+});
+
+//User input validation( birthday)
+//Verify the user input date of birth is valid (should before today)
+$(document).ready(function() {
+  // Declare the variable without assigning a value
+  var dobInput;
+
+  // Retrieve the Date of Birth input element when the user inputs a value
+  $('#dob-input').on('input', function() {
+    // Assign the element to the dobInput variable
+    dobInput = this;
+
+    // Add an event listener to the input element to check the value on change
+    dobInput.addEventListener('change', function() {
+      // Parse the user input value as a Date object
+      var dob = new Date(this.value);
+
+      // Get the current date
+      var today = new Date();
+      today.setHours(0, 0, 0, 0); // Set the time to midnight to ignore the time component
+
+      // Compare the year, month, and day values
+      if (dob.getFullYear() > today.getFullYear() ||
+          (dob.getFullYear() === today.getFullYear() &&
+          dob.getMonth() > today.getMonth()) ||
+          (dob.getFullYear() === today.getFullYear() &&
+          dob.getMonth() === today.getMonth() &&
+          dob.getDate() > today.getDate())) {
+        // Display an error message or take appropriate action
+        alert("Invalid birth day! \u274C Please enter a date on or before today.");
+        // Clear the input value
+        this.value = '';
+      }
+    });
   });
 });

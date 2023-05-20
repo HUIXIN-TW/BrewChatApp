@@ -11,7 +11,7 @@ from .handleStranger import generate_chat_pairs, get_today_chat_pair
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
-@login_required
+##@login_required
 def index():
     return render_template('index.html')
 
@@ -99,7 +99,7 @@ def register():
             return redirect(url_for('register'))
         # Additional password validation: requiring both letters and digits
         if not any(char.isalpha() for char in password) or not any(char.isdigit() for char in password):
-            flash('Password should contain at least one letter and one digit.', category='danger')
+            flash('Password should contain both letters and digits', category='danger')
             return redirect(url_for('register'))
 
         # If the user does not exist, then the application will create a new user and add them to the database

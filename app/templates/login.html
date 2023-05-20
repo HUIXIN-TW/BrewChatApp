@@ -1,19 +1,34 @@
-{% extends "layout.html" %}
-
-{% block main %}
-    <form action="/login" method="post">
-        <h1>LOGIN</h1>
-        <div>
-            <input autocomplete="off" autofocus class="input-group" name="username" placeholder="Username" type="text" required>
-        </div>
-        <div>
-            <input class="input-group" name="password" placeholder="Password" type="password" required>
-        </div>
-        <br>
-        <div>
-            <a href="/register" class="underline-link">New User?</a>
-        </div>
-        <br>
-        <button class="btn" type="submit">Log In</button>
-    </form>
+{% extends "layout.html" %} {% block main %}
+<form action="/login" method="post">
+  <h2 id="type-effect" class="log-reg-style">
+    Start your BrewChat Journey! &#x2615; 
+  </h2>
+  <h1 class="log-reg-style">LOGIN</h1>
+  <div>
+    <input
+      autocomplete="off"
+      autofocus
+      class="input-group"
+      name="username"
+      placeholder="Username"
+      type="text"
+      required
+    />
+  </div>
+  <div>
+    <input
+      class="input-group"
+      name="password"
+      placeholder="Password"
+      type="password"
+      required
+    />
+  </div>
+  <br />
+  <div>
+    <a href="/register" class="underline-link">New User?</a>
+  </div>
+  <br />
+  <button class="btn" type="submit">Log In</button>
+</form>
 {% endblock %}

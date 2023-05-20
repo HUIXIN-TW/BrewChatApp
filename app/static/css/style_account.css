@@ -1,8 +1,8 @@
 /*account page table style*/
 table {
   margin: 0 auto;
-  width: 100%; /* Change width to 100% */
-  max-width: 900px; /* Set a maximum width for the table */
+  width: 100%;
+  max-width: 900px; 
 }
 
 th:nth-child(1),
@@ -50,7 +50,6 @@ tr:hover td {
 
 /* Media queries */
 @media (max-width: 768px) {
-  /* Adjust the styles for smaller screens */
   table {
     width: 90%;
     max-width: none;
@@ -113,9 +112,22 @@ tr:hover td {
 .button-container {
   display: flex;
   justify-content: flex-end;
-  margin-top: 10px; /* Adjust this value as needed */
+  margin-top: 10px; 
 }
   
 .btn {
-  margin-left: 10px; /* Adjust this value as needed */
+  margin-left: 10px;
+}
+
+img {
+  border-radius: 10px;
+  width: 900px;
+  height: 450px;
+}
+
+@media screen and (max-width: 414px) {
+  img {
+    width:100%;
+    height:auto;
+  }
 }
