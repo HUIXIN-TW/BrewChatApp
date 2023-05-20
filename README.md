@@ -1,6 +1,111 @@
-# CITS5505-BrewChat-Instruction
+# CITS5505-BrewChat
 
 _UWA CITS5505 Project2 (22922504, 22926143) contributing equally_
+
+## Table of contents
+* [Purpose of the Web Application](#general-info)
+* [Architecture of the web application](#architecture)
+* [Technologies](#technologies)
+* [Launch](#launch)
+* [Test](#test)
+* [Source](#source)
+
+
+## Purpose of the Web Application <a name = "general-info"></a>
+
+BrewChat is a Flask-based chat application designed for coffee lovers. It connects users with a shared passion for coffee, allowing them to engage in conversations, share stories, and explore various coffee topics. The daily matching system pairs users with a random conversation partner each day, fostering diverse interactions. With Eliza, a 24/7 chatbot, users can ask coffee-related questions and receive insightful responses. BrewChat aims to recreate the serendipitous encounters of a coffee shop setting, providing companionship and knowledge exchange for coffee enthusiasts.
+
+## Architecture of the web application<a name = "architecture"></a>
+
+BrewChat is built using HTML, CSS, Flask, AJAX, jQuery, and the SQLAlchemy database framework, with the chat function powered by Socket.IO. Here's an overview of the application's architecture:
+
+- Client-side (Frontend): The client-side of BrewChat encompasses the user interface developed using HTML, CSS, and JavaScript. It provides an intuitive and visually appealing experience to users, allowing them to interact with the application. AJAX and jQuery are utilized for asynchronous requests and dynamic UI updates, enhancing the user experience.
+
+- Server-side (Backend): The server-side of BrewChat is built using the Flask web framework, which handles the server-side logic and serves the application's routes. Flask enables the processing of client requests, performs business logic, and communicates with databases and other services. Flask-SocketIO facilitates real-time bidirectional communication between clients and the server for chat functionality.
+
+- Chatbot (Backend): BrewChat incorporates the Eliza Chatbot as part of the backend functionality. The Eliza Chatbot, implemented using the Natural Language Toolkit (NLTK), enables chat-based conversations with users. It processes user input, performs natural language processing, generates appropriate responses, and communicates with the client-side interface.
+
+- Database: BrewChat utilizes the SQLAlchemy database framework to interact with the SQLite database. The SQLite database stores user information, conversation pairings, and relevant chat logs. SQLAlchemy provides an Object-Relational Mapping (ORM) tool, simplifying database operations within the application
+
+The BrewChat web application combines Flask, SocketIO, and SQLAlchemy for smooth real-time communication in the chat feature. Additionally, the integration of the Eliza chatbot enhances user engagement, replicating the serendipity of coffee shop encounters.
+
+## Technologies <a name = "technologies"></a>
+- Python version: 3.8.2 or 
+- Flask version: 2.3.1
+- Werkzeug version: 2.3.1
+- SQLAlchemy version: 2.0.12
+
+## Launch <a name = "launch"></a>
+
+### Create an environment
+
+Create a project folder and a venv folder within:
+
+```bash
+python3 -m venv venv
+```
+
+### Activate the environment
+
+Before you work on your project, activate the corresponding environment:
+
+macOS User:
+
+```bash
+. venv/bin/activate
+```
+
+Microsoft Windows user:
+
+```bash
+. venv\Scripts\activate
+```
+
+### Install all requirements
+
+```bash
+pip3 install -r requirements.txt
+```
+
+### Database setting
+
+Initialize database
+
+```bash
+flask db init
+flask db migrate -m "build tables"
+flask db upgrade
+flask shell
+```
+
+### Run Web App
+
+```bash
+flask --app brewchat.py --debug run
+```
+if not work, try `export FLASK_APP=brewchat.py`
+
+### Others
+
+Get you all requirements (every time when you install new module)
+
+```bash
+python3 -m pip freeze > requirements.txt
+```
+
+Check file tree for a Flask project with a basic structure:
+
+```bash
+tree -I 'venv|__pycache__|pytest_cache' > tree.txt
+```
+
+## Unit test <a name = "test"></a>
+
+## Commit log
+
+## Source <a name = "source"></a>
+This app is inspired by the Flask Mega-Tutorial  by [@Miguel Grinberg](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world)
+
 
 ## Introduction
 
