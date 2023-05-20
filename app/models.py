@@ -16,9 +16,9 @@ class User(UserMixin, db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), index=True, unique=True)
+    password_hash = db.Column(db.String(128))
     date_of_birth = db.Column(db.Date)
     quote = db.Column(db.String(250))
-    password_hash = db.Column(db.String(128))
     chats = db.relationship('Chat', backref='speaker', lazy='dynamic')
 
     # The __repr__ method tells Python how to print objects of this class, which is going to be useful for debugging.
@@ -57,17 +57,3 @@ class ChatPair(db.Model):
 
     def __repr__(self):
         return '<ChatPair {}>'.format(self.id)
-
-class UserChat(db.Model):
-    __tablename__ = 'user_chats'
-
-    id = db.Column(db.Integer, primary_key=True)
-    body = db.Column(db.String(140))
-    timestamp = db.Column(db.DateTime(timezone=True), index=True, default=datetime.now(pytz.timezone('Australia/Perth')))
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    pair_id = db.Column(db.Integer, db.ForeignKey('chat_pairs.id'))
-    pair = db.relationship('ChatPair', backref='conversations')
-
-
-    def __repr__(self):
-        return '<UserChat {}>'.format(self.body)
