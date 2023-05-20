@@ -5,7 +5,7 @@ from flask import (Flask, redirect, render_template, request, session,
                    url_for, flash, jsonify)
 from flask_login import current_user, login_user, logout_user, login_required
 from flask_socketio import SocketIO, join_room, leave_room, send, emit
-from app.models import User, Chat, ChatPair, UserChat
+from app.models import User, Chat, ChatPair
 from .handleStranger import generate_chat_pairs, get_today_chat_pair
 
 
@@ -136,14 +136,14 @@ def account():
             db.session.rollback()
             flash('Failed to update account details.', 'error')
         return redirect(url_for('account'))
-    
     # Get the current date
     current_datetime = datetime.now().date()
-    
+
     # Get the current values from the database
     dob = current_user.date_of_birth
     quote = current_user.quote
     return render_template('account.html', dob=dob, quote=quote, current_datetime=current_datetime)
+
 
 
 @app.route('/like_quote', methods=['POST'])
@@ -192,19 +192,20 @@ def search():
 @app.route('/chat/')
 @login_required
 def chat():
+    # Check if the random user name already exists
     if session.get('random_user_name') is None:
+        print(session['random_user_name'])
         get_random_user()
-
-    username = current_user.username
     # Check if the chat pair already exists for today
     if session.get('chat_pair_id') is None:
-        session['chat_pair_id'] = get_today_chat_pair().id
-    print(f'==== chat_pair_session: {session.get("chat_pair_id")} ====')
-
+        try:
+            session['chat_pair_id'] = get_today_chat_pair().id
+        except:
+            current_datetime = datetime.now().date()
+            flash('No one in Cafe Shop now. Please Chat with Eliza or Come Back later.', category='danger')
+            return render_template('eliza.html', current_datetime = current_datetime)
     room = session.get("chat_pair_id")
-    print(f'==== room: {room} ====')
-
-    return render_template('chat.html', username=username, room=room)
+    return render_template('chat.html', username=current_user.username, room=room)
 
 
 @app.route('/get_random_user')
