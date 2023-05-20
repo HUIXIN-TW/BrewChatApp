@@ -13,7 +13,7 @@ chatForm.addEventListener('submit', (event) => {
 
     addMessageToLog('You', message);
 
-    fetch('/index', {
+    fetch('/eliza', {
         method: 'POST',
         body: new URLSearchParams({
             'message': message
