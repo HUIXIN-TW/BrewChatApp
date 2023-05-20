@@ -201,3 +201,14 @@ Instance: /Users/huixinyang/Library/Mobile Documents/iCloud~md~obsidian/Document
 <class 'app.models.Chat'>
 >>> 
 ```
+
+## Set up Test
+
+```
+cd test
+python3 -m unittest test_authUser.py
+python3 -m unittest test_unauthUser.py
+python3 -m unittest test_validate.py
+python3 -m unittest test_db.py
+python3 test_selenium.py # need to flask run in the background
+```
