@@ -1,6 +1,6 @@
 # BrewChat Application
 
-<img src="brewchat_pages.jpeg" alt="brewchat_pages" width="500" height='auto"/>
+<img src="brewchat_pages.jpeg" width="600" height="auto">
 
 ## Table of contents
 * [Purpose](#general-info)
